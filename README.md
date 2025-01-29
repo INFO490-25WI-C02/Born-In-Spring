@@ -30,7 +30,7 @@ If homebuyers and sellers don’t have a trusted advisor, they might feel overwh
 ## Codebase Overview
 We mainly use CSS, HTML, Javascript,tailwind/bootstrap to build the solution. The solution will possibly be hosted on firebase.
 The codebase inclues:
-### Codebase Overview
+
 - **`/src/`**: Contains the main application logic, including reusable components and pages.
 - **`/public/`**: Holds static files such as images and icons used in the app.
 - **`firebase.json`**: Manages Firebase hosting and database configuration.
