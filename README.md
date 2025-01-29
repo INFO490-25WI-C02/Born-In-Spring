@@ -45,13 +45,19 @@ The codebase inclues:
   
 ## To contribute
 1. Clone using the web URL.
-git clone https://github.com/your-username/born-in-spring.git
+```bash
+git clone <repo_url>
+```
 2. Create a branch
+```bash
 git checkout -b branch name
+```
 3. Make changes, commit, and push
+```bash
 git add . 
 git commit -m "message"
 git push origin branch name
+```
 4. Open and Complete a Pull Request in Github.
 
 
