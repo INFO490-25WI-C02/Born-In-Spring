@@ -16,6 +16,16 @@ There’s a lack of transparent, reliable platforms that provide verified insigh
 If homebuyers and sellers don’t have a trusted advisor, they might feel overwhelmed and uncertain about one of the most important financial decisions of their lives. They could end up overpaying, underselling, or losing out on the perfect home. Without transparency or reliable guidance, they’re left to navigate a competitive market blindfolded, which can cause frustration, regret, and a lot of stress. Making no effort to solve this issue means people may miss out on achieving their dream home or investment goals.
 
 ## Feature
+P0: 
+- Agent Response Rate & Time Tracking
+- Monitor and remove fake and malicious comments.
+P1:
+- Dispute Resolution System
+P2:
+- Fraud Detection & Risk Scoring for Agents
+- Service Completion Rate Analytics
+- Communicate with agents in real time
+
 
 ## Codebase Overview
 We mainly use CSS, HTML, Javascript,tailwind/bootstrap to build the solution. The solution will possibly be hosted on firebase.
