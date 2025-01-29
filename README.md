@@ -20,13 +20,15 @@ If homebuyers and sellers don’t have a trusted advisor, they might feel overwh
 ## Codebase Overview
 We mainly use CSS, HTML, Javascript,tailwind/bootstrap to build the solution. The solution will possibly be hosted on firebase.
 The codebase inclues:
- - /src: Contains the main source code for the application, including reusable components and core logic.
- - /public: Stores static assets such as images, icons, and other files.
- - firebase.json: Configuration files for Firebase services like hosting and database management.
- - Draft: Static mock up for web app.
- - README.md: Provides an overview of the project, setup instructions, and guidelines for contributing.
- - .gitignore: Specifies files and directories to exclude from version control to keep the repository clean.
- - package.json: Define the project dependencies and scripts for consistent development environments.
+### Codebase Overview
+- **`/src/`**: Contains the main application logic, including reusable components and pages.
+- **`/public/`**: Holds static files such as images and icons used in the app.
+- **`firebase.json`**: Manages Firebase hosting and database configuration.
+- **`Draft/`**: Contains static mockups for the initial web app design.
+- **`README.md`**: Provides project documentation, including setup and contribution guidelines.
+- **`.gitignore`**: Excludes unnecessary files from version control.
+- **`package.json`**: Lists project dependencies and npm scripts for consistent development.
+
 
 ## Build and deploy instruction
 ### Prerequisites
