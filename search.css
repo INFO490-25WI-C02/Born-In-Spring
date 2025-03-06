@@ -16,6 +16,7 @@ body {
 .navbar {
     background-color: #007BFF;
     padding: 1.5rem 0;
+    font-family: Arial, sans-serif;
   }
   
   .navbar .container {

@@ -1,0 +1,275 @@
+
+
+/* Navbar */
+.navbar {
+    background-color: #007BFF;
+    padding: 1.5rem 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .navbar .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  
+  .navbar .nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+  }
+  
+  .navbar .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .navbar .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+.main-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+}
+
+/* Section Styling */
+.section {
+    margin-top: 20px; 
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #1e3eb1;
+}
+
+/* Agent Hero Section */
+.agent-hero {
+    display: flex;
+    align-items: center;
+}
+
+.agent-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.agent-info {
+    margin-left: 20px;
+}
+
+.agent-info h1 {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.agency {
+    color: #1e3eb1;
+    font-weight: 600;
+}
+
+.rating {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+/* Contact Buttons */
+.contact-buttons {
+    margin-top: 10px;
+}
+
+.btn {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.message-btn {
+    background: #007bff;
+    color: white;
+}
+
+
+/* Experience & Specialties */
+.experience-specialties p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Table Container */
+.deals-table-container {
+    overflow-x: auto;
+}
+
+/* Styled Table */
+.deals-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Table Header */
+.deals-table thead {
+    background-color: #007BFF;
+    color: white;
+    text-align: left;
+}
+
+.deals-table th {
+    padding: 12px;
+    font-weight: 600;
+}
+
+/* Table Body */
+.deals-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Alternate Row Coloring */
+.deals-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Client Feedback Styling */
+.deals-table td:last-child {
+    font-style: italic;
+    color: #333;
+}
+
+
+/* Rating Overview */
+.rating-overview {
+    display: flex;
+    align-items: center;
+}
+
+/*Rating Score */
+.rating-score {
+    width: 30%;
+    text-align: center;
+}
+
+.rating-number {
+    font-size: 40px;
+    font-weight: bold;
+    display: block;
+}
+
+.stars {
+    font-size: 18px;
+    color: gold;
+}
+
+.half-star {
+    color: lightgray;
+}
+
+.review-count {
+    font-size: 14px;
+    color: gray;
+}
+
+/* Rating Distribution */
+.rating-distribution {
+    width: 70%;
+}
+
+.rating-bar {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.rating-bar span {
+    width: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 8px;
+}
+
+.bar {
+    flex-grow: 1;
+    height: 8px;
+    background: lightgray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.fill {
+    height: 100%;
+    background: #3b82f6; 
+}
+
+/* Reviews */
+.reviews {
+    margin-top: 20px;
+}
+
+.review-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* .review-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+} */
+
+.review-content h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.review-time {
+    font-size: 12px;
+    color: #888;
+}
+
+.review-text {
+    font-size: 14px;
+    margin-top: 5px;
+    color: #444;
+}
+
