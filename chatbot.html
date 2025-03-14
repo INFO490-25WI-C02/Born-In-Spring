@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Agent Insights | Chatbot </title>
+    <link rel="stylesheet" href="chatbot.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <h1 class="logo">Agent Insights</h1>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="chatbot.html">Chatbot</a></li>
+                    <li><a href="search.html">Agents</a></li>
+                    <li><a href="EducationResource.html">Education Resource</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Chat Wrapper -->
+    <div class="chat-wrapper">
+        <div class="chat-container">
+
+            <!-- Bot's First Message -->
+            <div class="chat bot-chat">
+                <img src="logo.jpg" alt="Bot" class="avatar bot-avatar">
+                <div class="message bot-message">
+                    👋 Hi there! Welcome to InsightBot. Ask me anything to find your perfect real estate agent.
+                </div>
+            </div>
+
+            <!-- User Message -->
+            <div class="chat user-chat">
+                <div class="message user-message">What's the average commission for an agent in Seattle?</div>
+                <img src="User.png" alt="User" class="avatar user-avatar">
+            </div>
+
+            <!-- Bot Response -->
+            <div class="chat bot-chat">
+                <img src="logo.jpg" alt="Bot" class="avatar bot-avatar">
+                <div class="message bot-message">
+                    In the Seattle real estate market, the average total commission for an agent typically ranges from 5% to 6% of the final sale price.
+                </div>
+            </div>
+
+            <!-- User Message -->
+            <div class="chat user-chat">
+                <div class="message user-message">
+                    Hi, I'm looking for a real estate agent in Seattle who has at least 5 years of experience. 
+                    My budget is around $800K, and I'd also prefer an agent who can provide virtual tours and is familiar with the latest smart home technologies.
+                </div>
+                <img src="User.png" alt="User" class="avatar user-avatar">
+            </div>
+
+            <!-- Bot Recommendation -->
+            <div class="chat bot-chat">
+                <img src="logo.jpg" alt="Bot" class="avatar bot-avatar">
+                <div class="message bot-message">
+                    Got it! Based on your location and budget, I recommend <strong>Michael Parker</strong>, a Seattle-based agent with a ⭐ 4.9 rating who specializes in Capitol Hill properties.
+                    <a href="agentProfile.html" class="profile-btn">View Profile</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Chat Input -->
+    <div class="chat-input-container">
+        <input type="text" class="chat-input" placeholder="Ask me anything...">
+        <a href="chatbot.html" class="send-btn"><i class="fas fa-paper-plane"></i></a>
+    </div>
+
+</body>
+</html>
