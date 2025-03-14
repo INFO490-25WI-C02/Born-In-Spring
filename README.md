@@ -1,26 +1,31 @@
 # Agent Insights: Transparent Reviews, Trusted Choices
-We are developing a web/ social app to assist clients to choose their best possible real estate agent.
+We are developing a web app to assist GenZ homebuyer and seller to choose their best possible real estate agent.
 
 ## Problem Statement
-How might potential home purchasers or sellers in Washington State achieve finding a trusted real estate advisor 
-so that they can confidently make a desirable home purchase?
+How can Gen-Z home buyers and sellers in Washington State efficiently discover and partner with a trustworthy real estate advisor, empowering them to navigate the market and make the most informed decision?
 
 ## Problem Background
 ### Context
 According to the National Association of Realtors, there were 4,090,000 existing home sales in 2023. 88% of buyers purchased their homes through a Realtor or broker. 90% of sellers were assisted by a Realtor in the sale of their home. Finding a trusted real estate agent is an important problem for potential home purchasers. When making a large purchase such as a real estate, the complexity of the real estate purchase process causes a lot of potential home purchasers to lost an extensively amount of their savings.
 
 ### Current Need
-There’s a lack of transparent, reliable platforms that provide verified insights into an agent's history, expertise, and client satisfaction, leaving consumers to rely on guesswork or biased recommendations.
+While there are a number of platforms on the market today that are designed to help people find a real estate agent, such as Zillow, Realtor.com, and Redfin, there are still a number of concerns and difficulties in using these platforms that prevent people from finding a truly suitable and trustworthy real estate agent. First, the transparency and fairness of the realtor listings suggested by the platforms is often questioned. Existing platforms divert potential clients to real estate agents who are willing to pay exorbitant advertising fees rather than agents who may be more skilled or better suited to the needs of a particular buyer or seller. This mechanism prevents consumers from being matched with the best agent for their services. Secondly, the reviews on many platforms can be manipulated and only selectively present positive reviews leaving existing online reviews unreliable. Finally, while some platforms provide common contact information for agents, there is often no mechanism to track responsiveness or ensure ongoing communication after the initial contact. Surveys show that up to 47% of online inquiries are simply ignored. These factors greatly reduce the efficiency of the process of choosing the trusted real estate agent.
 
 ### Potential Impact
 If homebuyers and sellers don’t have a trusted advisor, they might feel overwhelmed and uncertain about one of the most important financial decisions of their lives. They could end up overpaying, underselling, or losing out on the perfect home. Without transparency or reliable guidance, they’re left to navigate a competitive market blindfolded, which can cause frustration, regret, and a lot of stress. Making no effort to solve this issue means people may miss out on achieving their dream home or investment goals.
 
 ## Feature
 ### P0: 
-- Agent Response Rate & Time Tracking
-- Monitor and remove fake and malicious comments.
+- Search functionality for finding agents
+- Transparent agent profiles
+- User ratings and reviews of advisors
+- AI chatbot connect user with agents that match their goals
 ### P1:
-- Dispute Resolution System
+- Share the agent profile
+- Favorite certain agent
+- Agent comparison
+- Interactive quiz that matches up the user with a random advisor
+- Educational resource hub
 ### P2:
 - Fraud Detection & Risk Scoring for Agents
 - Service Completion Rate Analytics
