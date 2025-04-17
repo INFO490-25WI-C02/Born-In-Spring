@@ -119,8 +119,8 @@ body {
 
 /* Profile Button */
 .profile-btn {
-    display: block; /* Ensures it stays on a new line */
-    width: fit-content; /* Adjusts width to content */
+    display: block; 
+    width: fit-content; 
     margin-top: 10px; 
     padding: 8px 15px;
     border: 1px solid black;
