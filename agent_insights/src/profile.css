@@ -1,0 +1,375 @@
+/* Fullscreen Hero */
+.hero-fullscreen {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100vh;
+    padding: 80px;
+    background-color: #f3f4f6;
+    gap: 60px;
+  }
+  
+  .hero-text-block {
+    flex: 1;
+    max-width: 500px;
+  }
+  
+  .hero-text-block h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-text-block p {
+    margin: 8px 0;
+    font-size: 1.1rem;
+  }
+  
+  .message-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-weight: 600;
+    background: #1e3eb1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .hero-image-full {
+    flex: 1;
+    width: 400px;
+    height: auto;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  /* Alternating Full-Width Sections */
+  .section-alt {
+    width: 100%;
+    padding: 80px 5%;
+  }
+  
+  .blue-bg {
+    background-color: #1e3eb1;
+    color: white;
+  }
+  
+  .light-bg {
+    background-color: #f6f7f8;
+  }
+  
+  .white-bg {
+    background-color: white;
+  }
+  
+  /* Typography Improvements */
+  .section-alt h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Review + Deal Table Styling Inherited */
+  .review-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 1rem;
+  }
+/* Contact Section */
+.contact-info {
+    font-size: 1rem;
+    line-height: 2;
+  }
+  
+  .contact-info a {
+    color: white;
+    text-decoration: underline;
+  }
+  
+  .social-media {
+    margin-top: 1rem;
+  }
+  
+  .social-icon {
+    margin-right: 12px;
+    font-size: 1.25rem;
+    color: white;
+  }
+  
+  /* Fee Table Styling */
+  .fee-calculator {
+    overflow-x: auto;
+    margin-top: 2rem;
+  }
+  
+  .fee-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  
+  .fee-table th,
+  .fee-table td {
+    padding: 16px;
+    text-align: left;
+    border: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+  }
+  
+  .fee-table th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+  }
+  
+  .fee-table input {
+    width: 100px;
+    padding: 6px;
+    text-align: right;
+    font-weight: bold;
+    border: none;
+    background: #f9f9f9;
+  }
+  
+  /* Responsive Past Deals Table */
+  .deals-table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+  }
+  
+  .deals-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  
+  .deals-table th,
+  .deals-table td {
+    padding: 16px;
+    border: 1px solid #e0e0e0;
+    font-size: 0.95rem;
+  }
+  
+  .deals-table th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+  }
+  /* === Specialties Section Layout === */
+.specialties-section {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    max-height: 100vh;
+    gap: 3rem;
+    padding: 4rem 5%;
+    box-sizing: border-box;
+  }
+  
+  /* Left Text Block */
+  .specialties-left {
+    flex: 1 1 50%;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  
+  .specialties-left h4 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .sub-label {
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+    color: #d2dbff;
+  }
+  
+  .tag-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+  
+  .tag-btn {
+    background: transparent;
+    color: white;
+    border: 1px solid #ffffff88;
+    padding: 6px 16px;
+    font-size: 0.9rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+  .tag-btn:hover {
+    background-color: white;
+    color: #1e3eb1;
+    font-weight: 600;
+  }
+  
+  /* List tweaks */
+  .list-white {
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .list-white li {
+    color: white;
+    margin-bottom: 0.6rem;
+    list-style: disc;
+  }
+  
+  /* === TikTok Embed === */
+  .specialties-video {
+    flex: 1 1 40%;
+    min-width: 280px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  .tiktok-embed {
+    all: unset;
+    width: 100%;
+  }
+  
+  /* Cleanup blue background */
+  .blue-bg {
+    background-color: #1e3eb1;
+    color: white;
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  /* Mobile tweaks */
+  @media screen and (max-width: 768px) {
+    .specialties-section {
+      flex-direction: column;
+      max-height: unset;
+    }
+  
+    .specialties-video {
+      max-width: 100%;
+    }
+  }
+
+  body {
+    line-height: 1.7;
+  }
+    
+  .hero-text-block .agency {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1e3eb1;
+    margin-top: 0.5rem;
+  }
+  
+
+.fee-calculator-section {
+    background-color: #f6f7f8;
+  }
+
+  .specialties-video {
+    flex: 1 1 45%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: hidden;
+  }
+  
+  .tiktok-wrapper {
+    transform: scale(0.9); /* adjust for spacing */
+    transform-origin: top;
+    width: 100%;
+    max-width: 360px; /* standard TikTok embed width */
+    height: auto;
+  }
+  
+  /* Remove extra styles TikTok injects */
+  .tiktok-embed {
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+/* Rating Summary */
+.reviews-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .reviews-summary .stars {
+    font-weight: 700;
+    color: #f7c948;
+  }
+  
+  .review-count {
+    color: #777;
+  }
+  
+  /* Write a Review Form */
+  .write-review-form {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .write-review-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    resize: vertical;
+  }
+  
+  .write-review-form button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background-color: #1e3eb1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s ease;
+  }
+  
+  .write-review-form button:hover {
+    background-color: #1632a0;
+  }
+  
+  /* Blue mode adjustments */
+  .scroll-wrapper.bg-blue .write-review-form textarea,
+  .scroll-wrapper.bg-blue .write-review-form label {
+    background: white;
+    color: #1e3eb1;
+  }
+  
+  .scroll-wrapper.bg-blue .write-review-form button {
+    background: white;
+    color: #1e3eb1;
+  }
+  
+  .scroll-wrapper.bg-blue .write-review-form button:hover {
+    background: white;
+  }
+
+  .hero-heading {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+  
+  

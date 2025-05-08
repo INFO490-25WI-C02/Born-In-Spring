@@ -1,0 +1,54 @@
+{
+    "name": "Michael Parker",
+    "agency": "Doe Real Estate",
+    "location": "Seattle, WA",
+    "experience": "15 Years in Real Estate",
+    "rating": 4.8,
+    "reviews": 418,
+    "phone": "(206) 555-1234",
+    "email": "lodha@doerealestate.com",
+    "website": "https://doerealestate.com/lodhamiracles",
+    "socialLinks": {
+      "whatsapp": "https://ischool.uw.edu",
+      "instagram": "https://www.instagram.com/uwischool/",
+      "tiktok": "https://www.tiktok.com/@uwischool",
+      "snapchat": "https://www.snapchat.com/add/uofwa?locale=en-US",
+      "linkedin": "https://www.linkedin.com/school/uw-ischool/posts/?feedView=all"
+    },
+    "specialties": "Luxury Homes, First-Time Buyers, Investment Properties",
+    "certifications": "Certified Residential Specialist (CRS), Licensed in CA & NV",
+    "languages": "English, Spanish",
+    "insights": "Expertise in neighborhood trends, school districts, and investment potential.",
+    "tiktokEmbedId": "7250108247682731307",
+    "deals": [
+      {
+        "type": "Luxury Condo",
+        "location": "Downtown Los Angeles, CA",
+        "price": "$1.2M",
+        "status": "Sold in 20 days",
+        "feedback": "Smooth process, got above asking price! - James R."
+      },
+      {
+        "type": "Single-Family Home",
+        "location": "Austin, TX",
+        "price": "$650K",
+        "status": "Sold in 15 days",
+        "feedback": "Agent Name guided us every step of the way! - Emily S."
+      }
+    ],
+    "reviews": [
+      {
+        "name": "Jane Cooper",
+        "stars": 3,
+        "time": "30 mins ago",
+        "text": "The agent was friendly and helpful, but I had to push harder for the best deal myself."
+      },
+      {
+        "name": "Michael Brown",
+        "stars": 5,
+        "time": "1 hour ago",
+        "text": "Amazing experience! My agent was always available, answered all my questions."
+      }
+    ]
+  }
+  
