@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import AgentProfile from './AgentProfile';
 import Header from './Header';
 import Homepage from './Homepage';
-import SearchResult from './SearchResult';
+import Chatbot from './Chatbot';
 import EducationResources from './EducationResource'
 import Search from './Search';
 import Footer from './Footer';
@@ -17,7 +17,7 @@ function App() {
         <Route path='/AgentProfile' element={<AgentProfile />} />
         <Route path='/Search' element={<Search />} />
         <Route path='/Resources' element={<EducationResources />} />
-        <Route path='/SearchResult' element={<SearchResult />} />
+        <Route path='/Chatbot' element={<Chatbot />} />
       </Routes>
       <Footer />
     </Router>
