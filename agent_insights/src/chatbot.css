@@ -1,0 +1,117 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+  
+/* Chat Wrapper */
+.chat-wrapper {
+    width: 80%;
+    max-width: 1000px;
+    margin: 20px auto 120px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-grow: 1;
+  }
+  
+  /* Chat Container - Remove artificial height, let page scroll */
+  .chat-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex-grow: 1;
+  }
+  
+  /* Chat Input: keep aligned with wrapper width */
+  .chat-input-container {
+    position: sticky;
+    bottom: 0;
+    background: #F5F5F5;
+    padding: 15px;
+    border-radius: 15px;
+    width: 80%;
+    max-width: 1000px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto 20px auto;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  }
+  
+  
+  /* Chat Bubble */
+  .chat {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .bot-chat {
+    justify-content: flex-start;
+  }
+  
+  .user-chat {
+    justify-content: flex-end;
+  }
+  
+  .bot-chat .message {
+    background-color: #EDF1FC;
+    color: #333;
+    padding: 12px 15px;
+    border-radius: 15px;
+    max-width: 60%;
+  }
+  
+  .user-chat .message {
+    background-color: #7B92F8;
+    color: white;
+    padding: 12px 15px;
+    border-radius: 15px;
+    max-width: 60%;
+  }
+  
+  .bot-avatar {
+    margin-right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+  .user-avatar {
+    margin-left: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  
+
+  
+  .chat-input {
+    flex-grow: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+    background: white;
+  }
+  
+  .send-btn {
+    background: #7B92F8;
+    border: none;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  
