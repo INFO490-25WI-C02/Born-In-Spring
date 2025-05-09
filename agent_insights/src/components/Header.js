@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import '../header.css';
 
 function PageHeader() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
-    <header>
+    <header className="header">
       <nav className="navbar">
-        <div className="container">
+        <div className="logo-container">
           <h1 className="logo">Agent Insights</h1>
-          <ul className="nav-links">
-            {/* <li><a href="/home">Home</a></li> */}
-            <li><Link to="/">Home</Link></li>
-            <li><a href="/chatbot">Chatbot</a></li>
-            <li><a href="/search">Agents</a></li>
-            <li><a href="/EducationResource">Education Resource</a></li>
-          </ul>
         </div>
+        <div className="menu-toggle" onClick={toggleMenu}>
+          ☰
+        </div>
+        <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+          <li><Link to="/" className="nav-item">Home</Link></li>
+          <li><a href="/chatbot" className="nav-item">Chatbot</a></li>
+          <li><a href="/search" className="nav-item">Agents</a></li>
+          <li><a href="/EducationResource" className="nav-item">Education Resources</a></li>
+        </ul>
       </nav>
     </header>
   );
