@@ -22,7 +22,7 @@ function PageHeader() {
           <li><Link to="/" className="nav-item">Home</Link></li>
           <li><a href="/chatbot" className="nav-item">Chatbot</a></li>
           <li><a href="/search" className="nav-item">Agents</a></li>
-          <li><a href="/EducationResource" className="nav-item">Education Resources</a></li>
+          <li><a href="/Resources" className="nav-item">Resources</a></li>
         </ul>
       </nav>
     </header>
