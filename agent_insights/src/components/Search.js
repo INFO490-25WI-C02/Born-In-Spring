@@ -149,9 +149,7 @@ export default function SearchPage() {
               { name: 'experience', label: 'Years of Experience', options: ['Any', '1-3 years', '3-5 years', '5+ years'] },
               { name: 'market', label: 'Specialized Markets', options: ['Any', 'Luxury Homes', 'Rental Properties', 'Commercial Real Estate', 'Condos & Townhomes'] },
               { name: 'review', label: 'Review Scores', options: ['Any', '4.0', '4.5', '5.0'] },
-              { name: 'language', label: 'Languages', options: ['Any', 'English', 'Spanish', 'Mandarin'] },
-              { name: 'tech', label: 'Tech & Digital Services', options: ['Any', 'Virtual Tours Available', 'Online Document Signing', 'AI Market Analysis', 'Social Media Marketing', '3D Home Staging'] },
-              { name: 'uniqueProp', label: 'Experience with Unique Properties', options: ['Any', 'Historic Homes', 'Eco-Friendly & Smart Homes', 'Co-Living & Shared Housing', 'Short-Term Rental Investments', 'Multi-Generational Homes'] }
+              { name: 'language', label: 'Languages', options: ['Any', 'English', 'Spanish', 'Mandarin'] }
             ].map((filter, idx) => (
               <div className="filter-group" key={idx}>
                 <label>{filter.label}</label>

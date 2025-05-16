@@ -1,52 +1,173 @@
-.homepage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  font-family: sans-serif;
-  background-image: url('/public/Agent_bg.jpg'); /* Update the path as needed */
+
+
+/* --- Updated Hero Section Styling --- */
+.hero-section {
+  background-image: url("/public/hero-house.png");
   background-size: cover;
   background-position: center;
-  color: #333;
-}
-
-.main-content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.card {
-  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent for readability */
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-}
-
-.card-title {
-  font-size: 1.75em;
-  margin-bottom: 15px;
-}
-
-.btn {
-  display: inline-block;
-  background-color: #007bff;
+  height: 100vh;
+  position: relative;
   color: white;
-  padding: 12px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  margin-top: 15px;
-  transition: background-color 0.3s, transform 0.2s;
 }
 
-.btn:hover {
-  background-color: #0056b3;
-  transform: scale(1.05);
+.hero-gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0.2) 80%);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 6vw;
+}
+
+.hero-content {
+  max-width: 700px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  max-width: 500px;
+  font-family: 'Inter', sans-serif;
+}
+
+.hero-cta {
+  display: inline-block;
+  margin-top: 2rem;
+  background-color: #5B72EE;
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background 0.3s ease;
+}
+
+.hero-cta:hover {
+  background-color: #4a5ee0;
+}
+
+
+/* Metrics-Style Value Proposition */
+.value-section {
+  background: #f9f9fc;
+  text-align: center;
+  padding: 5rem 2rem;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto 3rem auto;
+}
+
+.metrics-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 220px;
+  border-left: 3px solid #f2c6bd;
+  padding-left: 1rem;
+}
+
+.metric-number {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.metric-label {
+  font-size: 1rem;
+  color: #444;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Features Section */
+.features-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 4rem 2rem;
+  background: #ffffff;
+  text-align: center;
+}
+
+.feature-card {
+  background: #f0f4ff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.feature-card a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #5B72EE;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* How It Works */
+.how-it-works {
+  padding: 4rem 2rem;
+  background: #f7f7f7;
+  text-align: center;
+}
+
+.how-it-works ol {
+  max-width: 600px;
+  margin: 2rem auto 0;
+  text-align: left;
+  font-size: 1.1rem;
+}
+
+/* Testimonials */
+.testimonials {
+  background: #fff;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.testimonials blockquote {
+  font-style: italic;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.testimonials cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-weight: bold;
+  color: #333;
 }
