@@ -24,7 +24,7 @@ export default function HomePage() {
       {/* VALUE PROPOSITION */}
 {/* VALUE PROPOSITION METRICS STYLE */}
 <section className="value-section">
-  <h2 className="section-title">Why GenZ HomeMatch?</h2>
+  <h2 className="section-title">Why AgentInsights?</h2>
   <p className="section-subtitle">
     We built this platform for first-time buyers like you—so you can skip the confusion and start with confidence.
   </p>
