@@ -23,31 +23,36 @@ function Chatbot() {
     }
   }, [messages]);
 
-  const getBotReply = (userInput) => {
-    const text = userInput.toLowerCase();
-
-    if (text.includes('commission')) {
-      return "In Seattle, the average total real estate commission is around 5% to 6% of the final sale price.";
-    } else if (text.includes('top') && text.includes('capitol hill')) {
-      return "Sure! Michael Parker is a top-rated agent in Capitol Hill with a 4.9⭐ rating.";
-    } else if (text.includes('virtual tour')) {
-      return "Yes! We have agents who provide virtual home tours. Want me to recommend one?";
-    } else if (text.includes('budget')) {
-      return "Tell me your target budget and location, and I’ll find agents that match.";
-    } else {
-      return "Thanks for your message! Try asking about commissions, top agents, or specific neighborhoods.";
+  const getBotReply = async (userInput) => {
+    try {
+      const response = await fetch("http://localhost:3001/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userInput }),
+      });
+  
+      const data = await response.json();
+      return data.reply;
+    } catch (err) {
+      console.error("Error getting reply from backend:", err);
+      return "Sorry, I’m having trouble getting a response right now.";
     }
   };
+  
 
-  const handleSend = () => {
+  const handleSend = async () => {
     if (!input.trim()) return;
-
+  
     const userMsg = { sender: 'user', text: input };
-    const botMsg = { sender: 'bot', text: getBotReply(input) };
-
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+    setMessages((prev) => [...prev, userMsg]);
+  
+    const reply = await getBotReply(input);
+    const botMsg = { sender: 'bot', text: reply };
+    setMessages((prev) => [...prev, botMsg]);
+  
     setInput('');
   };
+  
 
   return (
     <>
