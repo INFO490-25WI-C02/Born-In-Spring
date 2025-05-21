@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { ref, onValue } from 'firebase/database';
+import database from '../firebase'; 
 import '../search.css';
 
 export default function SearchPage() {
+  const [agents, setAgents] = useState([]);
   const [filters, setFilters] = useState({
     city: '',
     searchTerm: '',
@@ -10,11 +13,19 @@ export default function SearchPage() {
     market: '',
     review: '',
     language: '',
-    tech: '',
-    uniqueProp: '',
-    priceMin: '',
-    priceMax: ''
+    communication: ''
   });
+
+  useEffect(() => {
+    const agentsRef = ref(database, 'agents');
+    onValue(agentsRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
+        const formatted = Object.values(data).filter(agent => agent && agent.name);
+        setAgents(formatted);
+      }
+    });
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,80 +35,14 @@ export default function SearchPage() {
     }));
   };
 
-  const agents = [
-    {
-      image: 'agent1.jpg',
-      agency: 'Doe Real Estate',
-      name: 'Michael Parker',
-      location: 'Seattle, WA',
-      rating: 4.8,
-      reviews: 418,
-      testimonial: 'Knows the market inside out! Got me the best deal without the hassle.',
-      experience: '5+ years',
-      market: 'Luxury Homes',
-      language: 'English',
-      tech: 'Virtual Tours Available',
-      unique: 'Historic Homes',
-      price: 1200000
-    },
-    {
-      image: 'agent2.jpg',
-      agency: 'Urban Realty',
-      name: 'Sarah Thompson',
-      location: 'Bellevue, WA',
-      rating: 4.9,
-      reviews: 1230,
-      testimonial: 'Expert in luxury apartments. Helped me find a stunning penthouse in no time!',
-      experience: '3-5 years',
-      market: 'Rental Properties',
-      language: 'Spanish',
-      tech: 'Social Media Marketing',
-      unique: 'Eco-Friendly & Smart Homes',
-      price: 950000
-    },
-    {
-      image: 'agent3.jpg',
-      agency: 'Blue Horizon',
-      name: 'James Carter',
-      location: 'Tacoma, WA',
-      rating: 4.7,
-      reviews: 850,
-      testimonial: 'Great negotiator! Found me an amazing deal in a competitive market.',
-      experience: '1-3 years',
-      market: 'Commercial Real Estate',
-      language: 'English',
-      tech: 'AI Market Analysis',
-      unique: 'Short-Term Rental Investments',
-      price: 720000
-    },
-    {
-      image: 'agent4.jpg',
-      agency: 'Green Spaces',
-      name: 'Emily Davis',
-      location: 'Spokane, WA',
-      rating: 5.0,
-      reviews: 490,
-      testimonial: 'Focused on eco-friendly homes. Helped me find a beautiful sustainable house!',
-      experience: '5+ years',
-      market: 'Condos & Townhomes',
-      language: 'Mandarin',
-      tech: '3D Home Staging',
-      unique: 'Multi-Generational Homes',
-      price: 800000
-    }
-  ];
-
   const filteredAgents = agents.filter((agent) => {
-    const matchesCity = !filters.city || agent.location.includes(filters.city);
-    const matchesSearch = agent.name.toLowerCase().includes(filters.searchTerm.toLowerCase());
+    const matchesCity = !filters.city || agent.location?.toLowerCase().includes(filters.city.toLowerCase());
+    const matchesSearch = !filters.searchTerm || agent.name?.toLowerCase().includes(filters.searchTerm.toLowerCase());
     const matchesExperience = !filters.experience || agent.experience === filters.experience;
     const matchesMarket = !filters.market || agent.market === filters.market;
     const matchesReview = !filters.review || agent.rating >= parseFloat(filters.review);
-    const matchesLanguage = !filters.language || agent.language === filters.language;
-    const matchesTech = !filters.tech || agent.tech === filters.tech;
-    const matchesUnique = !filters.uniqueProp || agent.unique === filters.uniqueProp;
-    const matchesPriceMin = !filters.priceMin || agent.price >= parseInt(filters.priceMin);
-    const matchesPriceMax = !filters.priceMax || agent.price <= parseInt(filters.priceMax);
+    const matchesLanguage = !filters.language || agent.languages?.toLowerCase().includes(filters.language.toLowerCase());
+    const matchesCommunication = !filters.communication || agent.communicationStyle?.toLowerCase() === filters.communication.toLowerCase();
 
     return (
       matchesCity &&
@@ -106,10 +51,7 @@ export default function SearchPage() {
       matchesMarket &&
       matchesReview &&
       matchesLanguage &&
-      matchesTech &&
-      matchesUnique &&
-      matchesPriceMin &&
-      matchesPriceMax
+      matchesCommunication
     );
   });
 
@@ -129,6 +71,9 @@ export default function SearchPage() {
             <option>Tacoma</option>
             <option>Spokane</option>
             <option>Bellevue</option>
+            <option>Redmond</option>
+            <option>Kirkland</option>
+            <option>Everett</option>
           </select>
           <input
             type="text"
@@ -147,9 +92,10 @@ export default function SearchPage() {
           <div className="filters">
             {[
               { name: 'experience', label: 'Years of Experience', options: ['Any', '1-3 years', '3-5 years', '5+ years'] },
-              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Luxury Homes', 'Rental Properties', 'Commercial Real Estate', 'Condos & Townhomes'] },
+              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Commercial Real Estate', 'Condos & Townhomes', 'Family Homes', 'First-Time Buyers', 'Luxury Homes', 'Rental Properties', 'Smart Homes', 'Starter Homes'] },
               { name: 'review', label: 'Review Scores', options: ['Any', '4.0', '4.5', '5.0'] },
-              { name: 'language', label: 'Languages', options: ['Any', 'English', 'Spanish', 'Mandarin'] }
+              { name: 'language', label: 'Languages', options: ['Any', 'Arabic', 'English', 'French', 'Korean', 'Mandarin', 'Spanish', 'Tagalog', 'Vietnamese'] },
+              { name: 'communication', label: 'Communication Style', options: ['Any', 'Detailed and methodical', 'Fast and direct', 'Patient and supportive', 'Professional and concise', 'Strategic and assertive', 'Warm and empathetic'] }
             ].map((filter, idx) => (
               <div className="filter-group" key={idx}>
                 <label>{filter.label}</label>
@@ -160,24 +106,6 @@ export default function SearchPage() {
                 </select>
               </div>
             ))}
-
-            <div className="filter-group price-range">
-              <label>Price</label>
-              <input
-                type="text"
-                name="priceMin"
-                placeholder="$ Min"
-                value={filters.priceMin}
-                onChange={handleChange}
-              />
-              <input
-                type="text"
-                name="priceMax"
-                placeholder="$ Max"
-                value={filters.priceMax}
-                onChange={handleChange}
-              />
-            </div>
           </div>
         </section>
 
@@ -190,9 +118,14 @@ export default function SearchPage() {
                   <h4 className="agency-name">{agent.agency}</h4>
                   <h2 className="agent-name">{agent.name}</h2>
                   <p className="agent-location">{agent.location}</p>
-                  <p className="rating">⭐ <strong>{agent.rating.toFixed(1)}/5</strong> ({agent.reviews})</p>
+                  <p className="rating">
+                    ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
+                    {Array.isArray(agent.reviews) ? agent.reviews.length : 0} Reviews)
+                  </p>
                   <p className="testimonial">"{agent.testimonial}"</p>
-                  <Link to="/AgentProfile" className="profile-btn">Check Profile</Link>
+                  <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
+                    Check Profile
+                  </Link>
                 </div>
               </div>
             ))

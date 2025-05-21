@@ -9,7 +9,7 @@ function Chatbot() {
     },
     {
       sender: 'bot',
-      text: "Here are some things I can help with:\n• What’s the average commission in Seattle?\n• Show me a top-rated agent in Capitol Hill.\n• Do you have agents who offer virtual tours?\n• Recommend an agent within my budget.",
+      text: "Not sure where to start? Try asking:\n• Can you match me with an agent near Bellevue?\n• I want someone who’s patient and responsive.\n• I’m looking for a family-friendly home — who can help?\n• Can you suggest someone with 5+ years of experience?",
     },
   ];
 
@@ -25,12 +25,12 @@ function Chatbot() {
 
   const getBotReply = async (userInput) => {
     try {
-      const response = await fetch("http://localhost:3001/chat", {
+      const response = await fetch("https://born-in-spring.onrender.com/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userInput }),
       });
-  
+
       const data = await response.json();
       return data.reply;
     } catch (err) {
@@ -38,21 +38,34 @@ function Chatbot() {
       return "Sorry, I’m having trouble getting a response right now.";
     }
   };
-  
+
+  const extractAgentSlug = (text) => {
+    const match = text.match(/recommend\s+([A-Z][a-z]+\s[A-Z][a-z]+)/i);
+    if (match) {
+      const name = match[1].toLowerCase().replace(/\s+/g, '_');
+      return name;
+    }
+    return null;
+  };
 
   const handleSend = async () => {
     if (!input.trim()) return;
-  
+
     const userMsg = { sender: 'user', text: input };
     setMessages((prev) => [...prev, userMsg]);
-  
+
     const reply = await getBotReply(input);
-    const botMsg = { sender: 'bot', text: reply };
+
+    const agentSlug = extractAgentSlug(reply);
+    const botMsg = {
+      sender: 'bot',
+      text: reply,
+      agentSlug: agentSlug,
+    };
+
     setMessages((prev) => [...prev, botMsg]);
-  
     setInput('');
   };
-  
 
   return (
     <>
@@ -67,6 +80,13 @@ function Chatbot() {
                 {msg.text.split('\n').map((line, i) => (
                   <div key={i}>{line}</div>
                 ))}
+                {msg.agentSlug && (
+                  <div style={{ marginTop: '10px' }}>
+                    <a href={`/AgentProfile?agent=${msg.agentSlug}`} className="profile-btn">
+                      View Profile
+                    </a>
+                  </div>
+                )}
               </div>
               {msg.sender === 'user' && (
                 <img src="User.png" alt="User" className="avatar user-avatar" />
