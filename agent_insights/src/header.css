@@ -1,7 +1,9 @@
 .header {
-  background-color: #007bff; /* Blue background */
+  background-color: #007bff;
   color: #f4f4f4;
-  padding: 8px 0; /* Reduced height */
+  padding: 0; /* Remove extra vertical space */
+  height: 135px; /* fixed header height */
+  overflow: hidden;
 }
 
 .navbar {
@@ -30,7 +32,7 @@
 .nav-item {
   color: #f4f4f4;
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: color 0.3s;
 }
 
@@ -41,6 +43,14 @@
 .menu-toggle {
   display: none;
 }
+
+.logo-img {
+  height: 6.5rem;
+  width: auto;
+  object-fit: contain;
+  /* filter: brightness(0) invert(1) */
+}
+
 
 @media (max-width: 768px) {
   .menu-toggle {

@@ -22,33 +22,32 @@ export default function HomePage() {
       </section>
 
       {/* VALUE PROPOSITION */}
-{/* VALUE PROPOSITION METRICS STYLE */}
-<section className="value-section">
-  <h2 className="section-title">Why AgentInsights?</h2>
-  <p className="section-subtitle">
-    We built this platform for first-time buyers like you—so you can skip the confusion and start with confidence.
-  </p>
+      <section className="value-section">
+        <h2 className="section-title">Why AgentInsights?</h2>
+        <p className="section-subtitle">
+          We created AgentInsights to help young buyers navigate real estate confidently — with clarity, trust, and tools that actually work for you.
+        </p>
 
-  <div className="metrics-grid">
-    <div className="metric">
-      <h3 className="metric-number">✅</h3>
-      <p className="metric-label">Personalized agent matching</p>
-    </div>
-    <div className="metric">
-      <h3 className="metric-number">👀</h3>
-      <p className="metric-label">Real reviews, not fluff</p>
-    </div>
-    <div className="metric">
-      <h3 className="metric-number">📲</h3>
-      <p className="metric-label">TikTok-style insights</p>
-    </div>
-    <div className="metric">
-      <h3 className="metric-number">📱</h3>
-      <p className="metric-label">Mobile-first, Gen Z–friendly design</p>
-    </div>
-  </div>
-</section>
+        <div className="metrics-grid">
+          <div className="metric">
+            <img src="matching.png" alt="Smart Matching" className="metric-icon" />
+            <p className="metric-label">Smart Agent Matching</p>
+          </div>
+          <div className="metric">
+            <img src="chabot.png" alt="Chatbot" className="metric-icon" />
+            <p className="metric-label">AI Chat Support</p>
+          </div>
+          <div className="metric">
+            <img src="tiktok.png" alt="TikTok Style Insights" className="metric-icon" />
+            <p className="metric-label">TikTok-style Insights</p>
+          </div>
+          <div className="metric">
+            <img src="guide.png" alt="Guides" className="metric-icon" />
+            <p className="metric-label">Gen Z–Friendly Guides</p>
+          </div>
+        </div>
 
+      </section>
 
       {/* FEATURE HIGHLIGHTS */}
       <section className="features-section">

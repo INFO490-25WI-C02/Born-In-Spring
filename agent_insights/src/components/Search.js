@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
-import database from '../firebase'; 
+import database from '../firebase';
 import '../search.css';
 
 export default function SearchPage() {
@@ -120,8 +120,9 @@ export default function SearchPage() {
                   <p className="agent-location">{agent.location}</p>
                   <p className="rating">
                     ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
-                    {Array.isArray(agent.reviews) ? agent.reviews.length : 0} Reviews)
+                    {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
                   </p>
+
                   <p className="testimonial">"{agent.testimonial}"</p>
                   <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
                     Check Profile

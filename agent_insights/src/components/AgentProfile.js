@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { ref, onValue } from 'firebase/database';
+import { ref, onValue, push } from 'firebase/database';
 import database from '../firebase';
 import '../profile.css';
 
 export default function AgentProfile() {
     const [agentData, setAgentData] = useState(null);
+    const [newComment, setNewComment] = useState('');
+const [newRating, setNewRating] = useState(5); 
+
     const location = useLocation();
 
     useEffect(() => {
@@ -27,7 +30,30 @@ export default function AgentProfile() {
         }
     }, [location.search]);
 
+    const handleReviewSubmit = (e) => {
+        e.preventDefault();
+        if (!newComment.trim()) return;
+
+        const queryParams = new URLSearchParams(location.search);
+        const agentKey = queryParams.get('agent');
+        const reviewRef = ref(database, `agents/${agentKey}/reviews`);
+
+        const newReview = {
+            name: "Anonymous",
+            stars: newRating,
+            time: "Just now",
+            text: newComment.trim()
+          };
+          
+          push(reviewRef, newReview);
+          setNewComment('');
+          setNewRating(5); 
+          
+    };
+
     if (!agentData) return <p>Loading agent profile...</p>;
+
+    const reviewsArray = agentData.reviews ? Object.values(agentData.reviews) : [];
 
     return (
         <>
@@ -40,7 +66,7 @@ export default function AgentProfile() {
                     <p>{agentData.experience}</p>
                     <p className="rating">
                         ⭐ {agentData.rating}/5 (
-                        {(Array.isArray(agentData.reviews) ? agentData.reviews.length : agentData.reviews)} Reviews)
+                        {reviewsArray.length} Reviews)
                     </p>
 
                     <button className="message-btn">Message Me</button>
@@ -135,41 +161,59 @@ export default function AgentProfile() {
             )}
 
             {/* REVIEWS SECTION */}
-            {agentData.reviews && (
-                <section id="reviews-section" className="scroll-section section-alt review-section">
-                    <h2>Client Reviews</h2>
+            <section id="reviews-section" className="scroll-section section-alt review-section">
+                <h2>Client Reviews</h2>
 
-                    <div className="reviews-summary">
-                        <span className="reviews-stars">⭐ <strong>{agentData.rating}/5</strong></span>
-                        <span className="review-count">({agentData.reviews.length} Reviews)</span>
-                    </div>
+                <div className="reviews-summary">
+                    <span className="reviews-stars">⭐ <strong>{agentData.rating}/5</strong></span>
+                    <span className="review-count">({reviewsArray.length} Reviews)</span>
+                </div>
 
-                    <form className="write-review-form" onSubmit={(e) => e.preventDefault()}>
-                        <label htmlFor="comment">Leave a Comment:</label>
-                        <textarea
-                            id="comment"
-                            name="comment"
-                            placeholder="Share your experience..."
-                            rows="4"
-                        ></textarea>
-                        <button type="submit">Submit</button>
-                    </form>
+                <form className="write-review-form" onSubmit={handleReviewSubmit}>
+  <label htmlFor="comment">Leave a Comment:</label>
+  <textarea
+    id="comment"
+    name="comment"
+    placeholder="Share your experience..."
+    rows="4"
+    value={newComment}
+    onChange={(e) => setNewComment(e.target.value)}
+  ></textarea>
 
-                    {agentData.reviews?.map((review, idx) => (
-                        <div className="review-card" key={idx}>
-                            <div className="review-content">
-                                <h4>{review.name}</h4>
-                                <div className="stars">
-                                    {'★'.repeat(review.stars)}{'☆'.repeat(5 - review.stars)}
-                                </div>
-                                <p className="review-time">{review.time}</p>
-                                <p className="review-text">"{review.text}"</p>
+  <label htmlFor="rating">Rating:</label>
+  <div className="star-selector">
+    {[1, 2, 3, 4, 5].map((num) => (
+      <label key={num} style={{ marginRight: "10px", cursor: "pointer" }}>
+        <input
+          type="radio"
+          name="rating"
+          value={num}
+          checked={newRating === num}
+          onChange={() => setNewRating(num)}
+          style={{ marginRight: "4px" }}
+        />
+        {'★'.repeat(num)}{'☆'.repeat(5 - num)}
+      </label>
+    ))}
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+                {reviewsArray.map((review, idx) => (
+                    <div className="review-card" key={idx}>
+                        <div className="review-content">
+                            <h4>{review.name}</h4>
+                            <div className="stars">
+                                {'★'.repeat(review.stars)}{'☆'.repeat(5 - review.stars)}
                             </div>
+                            <p className="review-time">{review.time}</p>
+                            <p className="review-text">"{review.text}"</p>
                         </div>
-                    ))}
-
-                </section>
-            )}
+                    </div>
+                ))}
+            </section>
 
             {/* CONTACT SECTION */}
             <section className="section-alt blue-bg">

@@ -298,15 +298,20 @@
   }
   
   .tiktok-wrapper {
-    transform: scale(0.9); /* adjust for spacing */
+    transform: scale(0.9); 
     transform-origin: top;
     width: 100%;
-    max-width: 360px; /* standard TikTok embed width */
+    max-width: 360px; 
     height: auto;
-  }
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;}
   
-  /* Remove extra styles TikTok injects */
+
+
   .tiktok-embed {
+    background: transparent !important;
+    box-shadow: none !important;
     border: none !important;
     padding: 0 !important;
     margin: 0 !important;

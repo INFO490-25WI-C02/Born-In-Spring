@@ -13,8 +13,11 @@ function PageHeader() {
     <header className="header">
       <nav className="navbar">
         <div className="logo-container">
-          <h1 className="logo">Agent Insights</h1>
+          <Link to="/">
+            <img src="/logo-icon2.png" alt="Agent Insights Logo" className="logo-img" />
+          </Link>
         </div>
+
         <div className="menu-toggle" onClick={toggleMenu}>
           ☰
         </div>
