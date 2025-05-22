@@ -66,7 +66,7 @@ export default function HomePage() {
         <div className="feature-card">
           <h3>📖 Resources You’ll Actually Read</h3>
           <p>We break down every step of the buying process—from pre-approval to closing—in quick, digestible guides made for Gen Z. No jargon, just facts.</p>
-          <Link to="/EducationResources">Start Learning</Link>
+          <Link to="/Resources">Start Learning</Link>
         </div>
       </section>
 
