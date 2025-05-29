@@ -190,3 +190,107 @@
   height: 48px;
   margin-bottom: 12px;
 }
+
+.how-it-works-clean {
+  padding: 5rem 2rem;
+  background-color: white;
+  text-align: center;
+}
+
+.how-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.how-subtitle {
+  max-width: 640px;
+  margin: 0 auto 4rem auto;
+  font-size: 1.1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 5rem auto;
+  gap: 3rem;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.step.reverse {
+  flex-direction: row-reverse;
+}
+
+.step-left {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.step-left img {
+  max-width: 360px;
+  position: relative;
+  z-index: 1;
+}
+
+.step-num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 5rem;
+  font-weight: 800;
+  color: #e3e7fc;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.step-right {
+  flex: 1;
+  text-align: left;
+  max-width: 500px;
+}
+
+.step-right h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.step-right p {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.step-right a {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: #5B72EE;
+  text-decoration: none;
+}
+
+.about-data {
+  background-color: #f9f9fc;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.about-data h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.about-data p {
+  max-width: 720px;
+  margin: 0 auto 1.5rem auto;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #444;
+}
+

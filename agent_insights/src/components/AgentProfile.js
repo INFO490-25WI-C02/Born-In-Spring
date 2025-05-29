@@ -59,21 +59,20 @@ export default function AgentProfile() {
     return (
         <>
             {/* HERO SECTION */}
-            <section className="hero-fullscreen">
-                <div className="hero-text-block">
-                    <h1 className="hero-heading">Discover {agentData.name}’s Real Estate Expertise</h1>
-                    <p className="agency">{agentData.agency}</p>
-                    <p>{agentData.location}</p>
-                    <p>{agentData.experience}</p>
-                    <p className="rating">
-                        ⭐ {agentData.rating}/5 (
-                        {reviewsArray.length} Reviews)
-                    </p>
-
-                    <button className="message-btn">Message Me</button>
-                </div>
-                <img className="hero-image-full" src={agentData.image} alt={agentData.name} />
-            </section>
+{/* HERO SECTION (New Layout) */}
+<section className="hero-layout">
+        <div className="hero-info">
+          <h1 className="hero-heading">Discover {agentData.name}’s Real Estate Expertise</h1>
+          <p className="agency">{agentData.agency}</p>
+          <p>{agentData.location}</p>
+          <p>{agentData.experience}</p>
+          <p>⭐ {agentData.rating}/5 ({reviewsArray.length} Reviews)</p>
+          <button className="message-btn">Message Me</button>
+        </div>
+        <div className="hero-photo">
+          <img src={agentData.image} alt={agentData.name} />
+        </div>
+      </section>
 
             {/* EXPERIENCE SECTION */}
             <section className="section-alt blue-bg">

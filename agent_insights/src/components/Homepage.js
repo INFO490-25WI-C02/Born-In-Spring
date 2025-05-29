@@ -49,50 +49,64 @@ export default function HomePage() {
 
       </section>
 
-      {/* FEATURE HIGHLIGHTS */}
-      <section className="features-section">
-        <div className="feature-card">
-          <h3>💬 24/7 Real Estate Chat Help</h3>
-          <p>Not sure where to start? Our AI Chatbot—InsightBot—is always here to answer your questions in real time. From choosing an agent to learning about escrow, just ask.</p>
-          <Link to="/Chatbot">Try It</Link>
-        </div>
+      <section className="how-it-works-clean">
+  <h2 className="how-title">How it works</h2>
+  <p className="how-subtitle">
+    From smart matching to real-time guidance, here’s how we make buying your first home less overwhelming and more empowering.
+  </p>
 
-        <div className="feature-card">
-          <h3>🕵️‍♀️ Find Agents That Match Your Vibe</h3>
-          <p>Use filters that actually matter—like “eco-conscious,” “speaks Mandarin,” or “great with first-time buyers.” No pushy salespeople, just your perfect fit.</p>
-          <Link to="/Search">Explore Agents</Link>
-        </div>
+  {/* STEP 1 */}
+  <div className="step">
+    <div className="step-left">
+      <img src="/image1.png" alt="Insightbot" />
+    </div>
+    <div className="step-right">
+      <h3>24/7 Real Estate Chat Help</h3>
+      <p>Not sure where to start? Our AI Chatbot—InsightBot—is always here to answer your questions in real time. From choosing an agent to learning about escrow, just ask.</p>
+      <Link to="/Chatbot">Try It</Link>
+    </div>
+  </div>
 
-        <div className="feature-card">
-          <h3>📖 Resources You’ll Actually Read</h3>
-          <p>We break down every step of the buying process—from pre-approval to closing—in quick, digestible guides made for Gen Z. No jargon, just facts.</p>
-          <Link to="/Resources">Start Learning</Link>
-        </div>
-      </section>
+  {/* STEP 2 */}
+  <div className="step reverse">
+    <div className="step-left">
+      <img src="/image2.png" alt="Search" />
+    </div>
+    <div className="step-right">
+      <h3>Find Agents That Fit You</h3>
+      <p>Use filters that actually matter—like “patient and supportive,” “speaks Mandarin,” or “great with first-time buyers.” No pushy salespeople, just your perfect fit.</p>
+      <Link to="/Search">Explore Agents</Link>
+    </div>
+  </div>
 
-      {/* HOW IT WORKS */}
-      <section className="how-it-works">
-        <h2>How It Works</h2>
-        <ol>
-          <li>Chat with InsightBot to get real-time guidance and common questions answered.</li>
-          <li>Browse agents with filters like language, market expertise, and digital services.</li>
-          <li>Explore agent profiles with past deals, TikToks, and verified reviews.</li>
-          <li>Learn what to expect with bite-sized, Gen Z–friendly guides.</li>
-        </ol>
-      </section>
+  {/* STEP 3 */}
+  <div className="step">
+    <div className="step-left">
+      <img src="/image3.png" alt="Buying Guides" />
+    </div>
+    <div className="step-right">
+      <h3>Resources You’ll Actually Read</h3>
+      <p>We break down every step of the buying process—from pre-approval to closing—in quick, digestible guides made for Gen Z. No jargon, just facts.</p>
+      <Link to="/Resources">Start Learning</Link>
+    </div>
+  </div>
+</section>
 
-      {/* TESTIMONIALS */}
-      <section className="testimonials">
-        <h2>What Other Buyers Are Saying</h2>
-        <blockquote>
-          "Honestly, I didn’t even know what escrow meant. This site made me feel confident buying my first place."<br />
-          <cite>— Jordan, 24</cite>
-        </blockquote>
-        <blockquote>
-          "The filters were 🔥. Found a bilingual agent who knew exactly what I needed as a first-gen buyer."<br />
-          <cite>— Selena, 22</cite>
-        </blockquote>
-      </section>
+
+
+      {/* ABOUT THE DATA */}
+<section className="about-data">
+  <h2>About the Data</h2>
+  <p>
+    This project was created for demonstration and educational purposes only. Most of the agent profiles, reviews, and metrics throughout the platform are fictional and generated to showcase how a fully functioning product might work.
+  </p>
+  <p>
+    While the data is largely made up, we did incorporate publicly available TikTok videos from real estate agents to provide a sense of authenticity and demonstrate how short-form content might be integrated into agent profiles.
+     These clips are used solely to illustrate design and user interaction — not to make claims about any individual.
+      </p>
+
+    </section>
+
 
     </div>
   );
