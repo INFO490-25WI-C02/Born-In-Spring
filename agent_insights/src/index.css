@@ -1,5 +1,18 @@
 
+.homepage {
+    line-height: 1.7;
+}
+.homepage h3 {
+  font-weight: 800;
+  /* line-height: 1.7; */
+  font-size: x-large;
+}
 
+.homepage h2 {
+  font-weight: 600;
+  /* line-height: 1.7; */
+  font-size: xx-large;
+}
 /* --- Updated Hero Section Styling --- */
 .hero-section {
   background-image: url("/public/hero-house.png");

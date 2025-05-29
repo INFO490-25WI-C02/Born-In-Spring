@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { ref, onValue, push } from 'firebase/database';
 import database from '../firebase';
 import '../profile.css';
+import { Link, useLocation } from 'react-router-dom';
+
 
 export default function AgentProfile() {
     const [agentData, setAgentData] = useState(null);
     const [newComment, setNewComment] = useState('');
-const [newRating, setNewRating] = useState(5); 
+    const [newRating, setNewRating] = useState(5);
 
     const location = useLocation();
 
@@ -43,12 +44,12 @@ const [newRating, setNewRating] = useState(5);
             stars: newRating,
             time: "Just now",
             text: newComment.trim()
-          };
-          
-          push(reviewRef, newReview);
-          setNewComment('');
-          setNewRating(5); 
-          
+        };
+
+        push(reviewRef, newReview);
+        setNewComment('');
+        setNewRating(5);
+
     };
 
     if (!agentData) return <p>Loading agent profile...</p>;
@@ -83,23 +84,26 @@ const [newRating, setNewRating] = useState(5);
 
                         <h4>Specialties</h4>
                         <div className="tag-group">
-                            {Array.isArray(agentData.specialties)
-                                ? agentData.specialties.map((tag, idx) => (
-                                    <button className="tag-btn" key={idx}>{tag}</button>
-                                ))
-                                : agentData.specialties?.split(',').map((tag, idx) => (
-                                    <button className="tag-btn" key={idx}>{tag.trim()}</button>
-                                ))
-                            }
-
+                            {(Array.isArray(agentData.specialties)
+                                ? agentData.specialties
+                                : agentData.specialties?.split(',')
+                            )?.map((tag, idx) => (
+                                <Link to={`/search?specialty=${encodeURIComponent(tag.trim())}`} className="tag-btn" key={idx}>
+                                    {tag.trim()}
+                                </Link>
+                            ))}
                         </div>
+
 
                         <h4>Languages Spoken</h4>
                         <div className="tag-group">
                             {agentData.languages?.split(',').map((lang, idx) => (
-                                <button className="tag-btn" key={idx}>{lang.trim()}</button>
+                                <Link to={`/search?language=${encodeURIComponent(lang.trim())}`} className="tag-btn" key={idx}>
+                                    {lang.trim()}
+                                </Link>
                             ))}
                         </div>
+
 
                         <h4>Certifications</h4>
                         <ul className="list-white">
@@ -118,14 +122,15 @@ const [newRating, setNewRating] = useState(5);
                         <div className="tiktok-wrapper">
                             <blockquote
                                 className="tiktok-embed"
-                                cite={`https://www.tiktok.com/@realestate/video/${agentData.tiktokEmbedId}`}
-                                data-video-id={agentData.tiktokEmbedId}
+                                cite={agentData.tiktokUrl}
+                                data-video-id={agentData.tiktokUrl?.split('/').pop()}
                                 style={{ width: '100%', height: '100%' }}
                             >
                                 <section>Loading...</section>
                             </blockquote>
                         </div>
                     </div>
+
                 </div>
             </section>
 
@@ -170,35 +175,35 @@ const [newRating, setNewRating] = useState(5);
                 </div>
 
                 <form className="write-review-form" onSubmit={handleReviewSubmit}>
-  <label htmlFor="comment">Leave a Comment:</label>
-  <textarea
-    id="comment"
-    name="comment"
-    placeholder="Share your experience..."
-    rows="4"
-    value={newComment}
-    onChange={(e) => setNewComment(e.target.value)}
-  ></textarea>
+                    <label htmlFor="comment">Leave a Comment:</label>
+                    <textarea
+                        id="comment"
+                        name="comment"
+                        placeholder="Share your experience..."
+                        rows="4"
+                        value={newComment}
+                        onChange={(e) => setNewComment(e.target.value)}
+                    ></textarea>
 
-  <label htmlFor="rating">Rating:</label>
-  <div className="star-selector">
-    {[1, 2, 3, 4, 5].map((num) => (
-      <label key={num} style={{ marginRight: "10px", cursor: "pointer" }}>
-        <input
-          type="radio"
-          name="rating"
-          value={num}
-          checked={newRating === num}
-          onChange={() => setNewRating(num)}
-          style={{ marginRight: "4px" }}
-        />
-        {'★'.repeat(num)}{'☆'.repeat(5 - num)}
-      </label>
-    ))}
-  </div>
+                    <label htmlFor="rating">Rating:</label>
+                    <div className="star-selector">
+                        {[1, 2, 3, 4, 5].map((num) => (
+                            <label key={num} style={{ marginRight: "10px", cursor: "pointer" }}>
+                                <input
+                                    type="radio"
+                                    name="rating"
+                                    value={num}
+                                    checked={newRating === num}
+                                    onChange={() => setNewRating(num)}
+                                    style={{ marginRight: "4px" }}
+                                />
+                                {'★'.repeat(num)}{'☆'.repeat(5 - num)}
+                            </label>
+                        ))}
+                    </div>
 
-  <button type="submit">Submit</button>
-</form>
+                    <button type="submit">Submit</button>
+                </form>
 
 
                 {reviewsArray.map((review, idx) => (

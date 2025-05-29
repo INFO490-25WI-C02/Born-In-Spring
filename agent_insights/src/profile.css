@@ -191,6 +191,19 @@
     flex-direction: column;
     justify-content: space-evenly;
   }
+  .specialties-left .section-title {
+    margin-bottom: 1rem;
+    color: #ffffff; 
+    text-align: left; 
+    padding-left: 0; 
+  }
+  .section-title {
+    font-size: 1.5rem; 
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
   
   .specialties-left h4 {
     margin-top: 1.5rem;
@@ -219,6 +232,7 @@
     border-radius: 20px;
     cursor: pointer;
     transition: 0.2s;
+    text-decoration: none;
   }
   
   .tag-btn:hover {

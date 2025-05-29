@@ -3,6 +3,19 @@
   margin: auto;
   padding: 20px;
   text-align: center;
+  font-weight: 400;
+  line-height: 1.7;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.education-resources-page h2,
+.education-resources-page h3 {
+  font-weight: 600;
+  line-height: 1.7;
+}
+
+.education-resources-page strong {
+  font-weight: 700;
 }
 
 .education-resources-title {
@@ -35,7 +48,7 @@
   transition: transform 0.3s, box-shadow 0.3s;
   text-align: center;
   max-width: 320px;
-  min-height: 220px;
+  min-height: 250px;
 }
 
 .resource-card:hover {
@@ -70,3 +83,124 @@
     max-width: 100%;
   }
 }
+
+.section {
+  margin-top: 3rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+  text-align: center;
+}
+
+.section-description {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+  text-align: center;
+}
+
+/* Updated Carousel Cost Section */
+.cost-infographic {
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  margin-top: 3rem;
+}
+
+.infographic-title {
+  font-size: 2rem;
+  color: #222;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.infographic-subtitle {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.cost-carousel {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.infographic-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  margin: 0 auto;
+}
+
+.infographic-icon {
+  font-size: 2rem;
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.infographic-card h3 {
+  color: #007bff;
+  font-size: 1.4rem;
+  margin: 0 0 10px;
+  text-align: center;
+}
+
+.infographic-card p {
+  margin: 0.25rem 0;
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.ask-button {
+  display: inline-block;
+  margin-top: 1rem;
+  background-color: #e9f5ff;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  max-width: 100%;
+  white-space: normal;
+  text-align: left;
+}
+
+.ask-button span {
+  font-style: italic;
+}
+
+.ask-button:hover {
+  background-color: #d4ecff;
+}
+
+/* Optional: adjust arrow buttons for carousel */
+.carousel-arrow {
+  background-color: #fff;
+  color: #007bff;
+  border: 2px solid #007bff;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+

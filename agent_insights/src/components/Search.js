@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ref, onValue } from 'firebase/database';
 import database from '../firebase';
 import '../search.css';
@@ -15,7 +15,19 @@ export default function SearchPage() {
     language: '',
     communication: ''
   });
+  const location = useLocation();
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const specialty = queryParams.get('specialty');
+    const language = queryParams.get('language');
+
+    setFilters((prev) => ({
+      ...prev,
+      market: specialty || '',
+      language: language || ''
+    }));
+  }, [location.search]);
   useEffect(() => {
     const agentsRef = ref(database, 'agents');
     onValue(agentsRef, (snapshot) => {
@@ -92,7 +104,7 @@ export default function SearchPage() {
           <div className="filters">
             {[
               { name: 'experience', label: 'Years of Experience', options: ['Any', '1-3 years', '3-5 years', '5+ years'] },
-              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Commercial Real Estate', 'Condos & Townhomes', 'Family Homes', 'First-Time Buyers', 'Luxury Homes', 'Rental Properties', 'Smart Homes', 'Starter Homes'] },
+              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Condos & Townhomes', 'Family Homes', 'Luxury Homes', 'Pet-Friendly Homes', 'Rental Properties', 'Smart Homes', 'Starter Homes', 'Vacation & Second Homes', 'Eco-Friendly Homes','First-Time Buyers'] },
               { name: 'review', label: 'Review Scores', options: ['Any', '4.0', '4.5', '5.0'] },
               { name: 'language', label: 'Languages', options: ['Any', 'Arabic', 'English', 'French', 'Korean', 'Mandarin', 'Spanish', 'Tagalog', 'Vietnamese'] },
               { name: 'communication', label: 'Communication Style', options: ['Any', 'Detailed and methodical', 'Fast and direct', 'Patient and supportive', 'Professional and concise', 'Strategic and assertive', 'Warm and empathetic'] }
@@ -122,7 +134,6 @@ export default function SearchPage() {
                     ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
                     {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
                   </p>
-
                   <p className="testimonial">"{agent.testimonial}"</p>
                   <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
                     Check Profile

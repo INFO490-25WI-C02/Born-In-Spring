@@ -16,7 +16,7 @@ export default function HomePage() {
             <p className="hero-subtitle">
               We make homebuying smarter for Gen Z—powered by AI, real reviews, and tech-savvy filters.
             </p>
-            <Link to="/Search" className="hero-cta">Start Your Search →</Link>
+            <Link to="/Chatbot" className="hero-cta">Discover Your Match →</Link>
           </div>
         </div>
       </section>
