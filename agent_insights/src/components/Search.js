@@ -51,33 +51,33 @@ export default function SearchPage() {
     const matchesCity =
       !filters.city ||
       agent.location?.toLowerCase().includes(filters.city.toLowerCase());
-  
+
     const matchesSearch =
       !filters.searchTerm ||
       agent.name?.toLowerCase().includes(filters.searchTerm.toLowerCase());
-  
+
     const matchesExperience =
       !filters.experience || agent.experience === filters.experience;
-  
+
     const matchesMarket =
       !filters.market || agent.market === filters.market;
-  
+
     const matchesReview =
       !filters.review || agent.rating >= parseFloat(filters.review);
-  
+
     const matchesLanguage =
       !filters.language ||
       (Array.isArray(agent.languages) &&
         agent.languages
           .map((l) => l.toLowerCase())
           .includes(filters.language.toLowerCase()));
-  
+
     const matchesCommunication =
       !filters.communication ||
       agent.communicationStyle
         ?.toLowerCase()
         .includes(filters.communication.toLowerCase());
-  
+
     return (
       matchesCity &&
       matchesSearch &&
@@ -127,7 +127,7 @@ export default function SearchPage() {
           <div className="filters">
             {[
               { name: 'experience', label: 'Years of Experience', options: ['Any', '1-3 years', '3-5 years', '5+ years'] },
-              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Condos & Townhomes', 'Family Homes', 'Luxury Homes', 'Pet-Friendly Homes', 'Rental Properties', 'Smart Homes', 'Starter Homes', 'Vacation & Second Homes', 'Eco-Friendly Homes','First-Time Buyers'] },
+              { name: 'market', label: 'Specialized Markets', options: ['Any', 'Condos & Townhomes', 'Family Homes', 'Luxury Homes', 'Pet-Friendly Homes', 'Rental Properties', 'Smart Homes', 'Starter Homes', 'Vacation & Second Homes', 'Eco-Friendly Homes', 'First-Time Buyers'] },
               { name: 'review', label: 'Review Scores', options: ['Any', '4.0', '4.5', '5.0'] },
               { name: 'language', label: 'Languages', options: ['Any', 'Arabic', 'English', 'French', 'Korean', 'Mandarin', 'Spanish', 'Tagalog', 'Vietnamese'] },
               { name: 'communication', label: 'Communication Style', options: ['Any', 'Detailed and methodical', 'Fast and direct', 'Patient and supportive', 'Professional and concise', 'Strategic and assertive', 'Warm and empathetic'] }
@@ -145,29 +145,29 @@ export default function SearchPage() {
         </section>
 
         <section className="agent-list">
-  {filteredAgents.length > 0 ? (
-    filteredAgents.map((agent, index) => (
-      <div className="agent-card" key={index}>
-        <img src={agent.image} alt={agent.name} />
-        <div className="agent-info">
-          <h4 className="agency-name">{agent.agency}</h4>
-          <h2 className="agent-name">{agent.name}</h2>
-          <p className="agent-location">{agent.location}</p>
-          <p className="rating">
-            ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
-            {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
-          </p>
-          <p className="testimonial">"{agent.testimonial}"</p>
-          <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
-            Check Profile
-          </Link>
-        </div>
-      </div>
-    ))
-  ) : (
-    <div className="no-results">😕 No matching agents found. Try adjusting your filters.</div>
-  )}
-</section>
+          {filteredAgents.length > 0 ? (
+            filteredAgents.map((agent, index) => (
+              <div className="agent-card" key={index}>
+                <img src={agent.image} alt={agent.name} />
+                <div className="agent-info">
+                  <h4 className="agency-name">{agent.agency}</h4>
+                  <h2 className="agent-name">{agent.name}</h2>
+                  <p className="agent-location">{agent.location}</p>
+                  <p className="rating">
+                    ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
+                    {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
+                  </p>
+                  <p className="testimonial">"{agent.testimonial}"</p>
+                  <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
+                    Check Profile
+                  </Link>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="no-results">😕 No matching agents found. Try adjusting your filters.</div>
+          )}
+        </section>
 
       </div>
     </>

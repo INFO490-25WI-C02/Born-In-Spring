@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../header.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import LoginOffcanvas from './Login';
 
 function PageHeader() {
   return (
@@ -34,27 +34,31 @@ function PageHeader() {
             <li className="nav-item me-4">
               <Link className="nav-link" to="/search">Agents</Link>
             </li>
-            <li className="nav-item">
+            <li className="nav-item me-7">
               <Link className="nav-link" to="/Resources">Resources</Link>
+            </li>
+            <li className="nav-item me-0">
+              <button
+                className="nav-link btn p-0"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#userOffcanvas"
+                aria-label="User menu"
+              >
+                <img
+                  src="/avatar.png"
+                  alt="User Avatar"
+                  className="rounded-circle"
+                  width="40"
+                  height="40"
+                />
+              </button>
             </li>
 
           </ul>
 
         </div>
-        {/* <div className="user-avatar d-none d-md-flex">
-          <img
-            src="/avatar.png"
-            alt="User Avatar"
-            width="40"
-            height="40"
-            className="rounded-circle"
-            data-bs-toggle="offcanvas"
-            data-bs-target="#userOffcanvas"
-            role="button"
-            style={{ cursor: 'pointer', backgroundColor: 'white' }}
-          />
-        </div> */}
       </nav>
+      <LoginOffcanvas />
     </header>
   );
 }

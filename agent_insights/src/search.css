@@ -3,158 +3,121 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-/* Body */
-body {
+  }
+  
+  /* Body */
+  body {
     font-family: 'Montserrat', sans-serif;
     background-color: #f9f9f9;
     color: #333;
-}
-
-/* Navbar */
-.navbar {
-    background-color: #007BFF;
-    padding: 1.5rem 0;
-    font-family: Arial, sans-serif;
   }
   
+  /* Navbar */
+  .navbar {
+    background-color: #007BFF;
+    padding: 1.5rem 0;
+  }
   .navbar .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  
   .navbar .logo {
     color: #fff;
     font-size: 1.5rem;
-    margin: 0;
+    font-weight: bold;
   }
-  
   .navbar .nav-links {
     list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
   }
-  
   .navbar .nav-links li {
     margin-left: 20px;
   }
-  
   .navbar .nav-links a {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
   }
-
-/* Title */
-.page-title {
+  
+  /* Page Title */
+  .page-title {
     font-family: 'Inter', sans-serif;
     font-size: 28px;
     font-weight: 600;
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-
-/* Search Box */
-.search-container {
+    margin: 50px 0 30px;
+  }
+  
+  /* Search Box */
+  .search-container {
     display: flex;
     justify-content: center;
     gap: 15px;
     margin-bottom: 40px;
-}
-
-.search-input {
+  }
+  .search-input {
     border: 2px solid #1e3eb1;
     border-radius: 25px;
-    padding: 12px 16px; 
+    padding: 12px 16px;
     font-size: 14px;
     text-align: center;
-}
-
-.search-btn {
+  }
+  .search-btn {
     background-color: #1e3eb1;
     color: white;
     font-size: 14px;
     font-weight: 600;
-    padding: 12px 20px; 
+    padding: 12px 20px;
     border-radius: 25px;
     border: none;
-}
-
-/* Layout */
-.main-container {
+  }
+  
+  /* Layout */
+  .main-container {
     display: flex;
     align-items: flex-start;
     gap: 40px;
-    padding: 20px 20px; 
-    max-width: 1400px; 
-    margin: 0 auto; 
-}
-
-/* Advanced Search */
-.advanced-search {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  
+  /* Advanced Search Panel */
+  .advanced-search {
     flex: 1;
     max-width: 300px;
     padding: 25px;
     background: white;
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Filter Title */
-.advanced-search h2 {
+  }
+  .advanced-search h2 {
     font-family: 'Inter', sans-serif;
     font-size: 22px;
     font-weight: 600;
     margin-bottom: 20px;
-}
-
-/* Filter Group */
-.filter-group {
+  }
+  .filter-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 15px; 
-}
-
-/* Label Styling */
-.filter-group label {
+    margin-bottom: 15px;
+  }
+  .filter-group label {
     font-size: 14px;
     font-weight: 500;
     margin-bottom: 5px;
-    color: #333;
-}
-
-/* Dropdowns & Inputs */
-.filter-group select,
-.filter-group input {
+  }
+  .filter-group select,
+  .filter-group input {
     width: 100%;
     padding: 10px 12px;
     font-size: 14px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background: white;
     appearance: none;
-}
-
-/* Price Input Fields */
-.price-range {
-    display: flex;
-    gap: 10px;
-}
-
-.price-range input {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background: white;
-}
-
-.apply-filters-btn {
+  }
+  .apply-filters-btn {
     background: #007bff;
     color: white;
     font-size: 16px;
@@ -165,111 +128,107 @@ body {
     width: 100%;
     margin-top: 20px;
     text-align: center;
-    text-decoration: none;
-}
-
-/* Agent Cards */
-.agent-list, .no-results {
+    cursor: pointer;
+  }
+  
+  /* Agent List – two columns on large screens, equal‐height rows */
+  .agent-list,
+  .no-results {
     flex: 2;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;       
     gap: 25px;
-    align-items: start; 
-    min-height: 100%;
-}
-
-
-/* Agent Card */
-.agent-card {
+    justify-items: center;     
+    align-items: stretch;       
+  }
+  
+  /* Agent Card */
+  .agent-card {
     display: flex;
-    width: 520px; 
-    height: 230px; 
+    flex-direction: row;
+    align-items: stretch;     
+    width: 100%;
+    max-width: 520px;
     background: white;
-    padding: 15px; 
-    border-radius: 15px; 
+    padding: 15px;
+    border-radius: 15px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    align-items: center;
     transition: all 0.3s ease;
-}
-
-.agent-card:hover {
+  }
+  .agent-card:hover {
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-/* Image on Left */
-.agent-card img {
-    width: 40%; 
-    height: 100%;
+  }
+  
+  /* Image on Left */
+  .agent-card img {
+    width: 40%;
+    height: auto;
     object-fit: cover;
-    border-radius: 12px; 
-}
-
-/* Agent Info */
-.agent-info {
-    flex: 2;
-    padding-left: 15px;
-}
-
-.agency-name {
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  
+  /* Agent Info */
+  .agent-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;  
+    margin-left: 15px;
+  }
+  .agency-name {
     color: #1e3eb1;
-    font-size: 12px; 
+    font-size: 12px;
     font-weight: 600;
-}
-
-.agent-name {
-    font-size: 20px; 
+  }
+  .agent-name {
+    font-size: 20px;
     font-weight: 700;
-}
-
-.agent-location {
-    font-size: 12px; 
+    margin: 4px 0;
+  }
+  .agent-location {
+    font-size: 12px;
     color: #555;
-}
-
-.rating {
+  }
+  .rating {
     font-size: 14px;
     margin: 8px 0;
-}
-
-.testimonial {
-    font-size: 12px; 
+  }
+  .testimonial {
+    font-size: 12px;
     color: #5a5a5a;
-}
-
-/* Check Profile Button */
-.profile-btn {
+  }
+  
+  /* Check Profile Button */
+  .profile-btn {
     display: inline-flex;
     align-items: center;
     background: #1e3eb1;
     color: white;
-    padding: 10px 16px; 
+    padding: 10px 16px;
     text-decoration: none;
-    border-radius: 40px; 
+    border-radius: 40px;
     font-weight: 600;
-    font-size: 14px; 
-    margin-top: 10px; 
-}
-
-.profile-btn:hover {
+    font-size: 14px;
+    align-self: flex-start;
+    cursor: pointer;
+  }
+  .profile-btn:hover {
     background: #1237a0;
-}
-
-
-@media (max-width: 900px) {
-
-
+  }
+  
+  /* Responsive Breakpoints */
+  @media (max-width: 900px) {
     .main-container {
       flex-direction: column;
       padding: 10px;
     }
-  
-
     .advanced-search {
       width: 100%;
-      max-width: 880px;
+      max-width: none;
       margin-bottom: 20px;
     }
-
     .search-container {
       flex-direction: column;
       gap: 10px;
@@ -279,72 +238,34 @@ body {
     .search-input,
     .search-btn {
       width: 100%;
-      box-sizing: border-box;
     }
-  
-
     .page-title {
       font-size: 22px;
       margin: 20px 10px;
     }
-  
-
-    .agent-list, .no-results {
-      display: grid;
+    .agent-list,
+    .no-results {
       grid-template-columns: 1fr;
-      gap: 15px;
-      justify-items: center;
-    }
-  
-    .agent-card {
-        width: 520px;
-        height: 230px;
-        flex-direction: row;
-      }
-      .agent-card img {
-        width: 40%;
-        height: 100%;
-      }
-  
-    /* Tweak font sizes slightly */
-    .agent-info {
-      padding-left: 10px;
-    }
-    .agent-name {
-      font-size: 18px;
-    }
-    .agency-name,
-    .agent-location,
-    .rating,
-    .testimonial {
-      font-size: 12px;
-    }
-    .profile-btn {
-      font-size: 13px;
-      padding: 8px 12px;
     }
   }
   
-
   @media (max-width: 480px) {
-  
-
     .advanced-search h2 {
       font-size: 18px;
     }
-  
-
     .agent-card {
-        width: 440px;
-        height: 230px;
-        flex-direction: row;
-      }
-      .agent-card img {
-        width: 40%;
-        height: 100%;
-      }
+      flex-direction: column;
+      text-align: center;
+    }
+    .agent-card img {
+      width: 100%;
+      margin-bottom: 12px;
+    }
     .agent-info {
-      padding-left: 0;
+      margin-left: 0;
+    }
+    .profile-btn {
+      margin: 12px auto 0;
     }
   }
   

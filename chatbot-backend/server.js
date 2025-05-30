@@ -25,37 +25,55 @@ app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
   try {
+
     const snapshot = await db.ref('agents').once('value');
     const agents = snapshot.val();
-
     if (!agents) {
       return res.json({ reply: "No agents found in the database." });
     }
 
-    const context = Object.values(agents).map(agent =>
-      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, specialties: ${agent.specialties.join(", ")}, commission: ${agent.commission}`
-    ).join('\n');
 
-    const prompt = `
-You are a helpful real estate assistant. Here is a list of available agents:
+    const context = Object.values(agents)
+      .map(agent =>
+        `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, specialties: ${agent.specialties.join(", ")}, commission: ${agent.commission}`
+      )
+      .join('\n');
+
+
+
+    const wantsAgent = /\b(?:recommend(?: an)? agent|match(?: me)? with an agent|agent near)\b/i
+      .test(userMessage);
+
+
+
+    const systemPrompt = wantsAgent
+      ? `
+You are a helpful real-estate assistant.  
+When the user explicitly asks you to recommend or match them with an agent, choose ONE agent from the list below and mention their name, rating, and why they fit the user’s request:
 
 ${context}
-
-Based on the user's request, recommend ONE specific agent. Mention the agent's name, their rating, and one matching specialty. Be concise.
+`
+      : `
+You are a helpful real-estate assistant.  
+Answer general questions about prices, market trends, processes, financing, and tips.  
+Do NOT recommend any agent unless the user explicitly asks for one.
 `;
+
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: prompt },
+        { role: 'system', content: systemPrompt.trim() },
         { role: 'user', content: userMessage }
       ]
     });
 
+
     const reply = completion.choices[0].message.content;
     res.json({ reply });
+
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Error in /chat:', err);
     res.status(500).json({ reply: 'Something went wrong. Please try again later.' });
   }
 });

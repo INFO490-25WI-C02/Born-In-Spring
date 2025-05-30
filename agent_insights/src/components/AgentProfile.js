@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { ref, onValue, push } from 'firebase/database';
-import database from '../firebase';
+import { auth, db } from '../firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { Offcanvas } from 'bootstrap';
 import '../profile.css';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,6 +11,9 @@ export default function AgentProfile() {
     const [agentData, setAgentData] = useState(null);
     const [newComment, setNewComment] = useState('');
     const [newRating, setNewRating] = useState(5);
+
+    const [user, setUser] = useState(null);
+    const [profile, setProfile] = useState({ firstName: '', lastName: '' });
 
     const location = useLocation();
 
@@ -20,46 +25,71 @@ export default function AgentProfile() {
     }, []);
 
     useEffect(() => {
-        const queryParams = new URLSearchParams(location.search);
-        const agentKey = queryParams.get('agent');
-        if (agentKey) {
-            const agentRef = ref(database, `agents/${agentKey}`);
-            onValue(agentRef, (snapshot) => {
-                const data = snapshot.val();
-                if (data) setAgentData(data);
-            });
-        }
+        const qp = new URLSearchParams(location.search);
+        const agentKey = qp.get('agent');
+        if (!agentKey) return;
+
+        const agentRef = ref(db, `agents/${agentKey}`);
+        return onValue(agentRef, snap => setAgentData(snap.val()));
     }, [location.search]);
 
-    const handleReviewSubmit = (e) => {
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, u => {
+            setUser(u);
+            if (u) {
+                const userRef = ref(db, `users/${u.uid}`);
+                onValue(userRef, snap => {
+                    const d = snap.val() || {};
+                    setProfile({
+                        firstName: d.firstName || '',
+                        lastName: d.lastName || ''
+                    });
+                });
+            } else {
+                setProfile({ firstName: '', lastName: '' });
+            }
+        });
+        return unsubscribe;
+    }, []);
+
+    const handleReviewSubmit = e => {
         e.preventDefault();
         if (!newComment.trim()) return;
 
-        const queryParams = new URLSearchParams(location.search);
-        const agentKey = queryParams.get('agent');
-        const reviewRef = ref(database, `agents/${agentKey}/reviews`);
+
+        if (!user) {
+            const offEl = document.getElementById('userOffcanvas');
+            Offcanvas.getOrCreateInstance(offEl).show();
+            return;
+        }
+
+        const qp = new URLSearchParams(location.search);
+        const agentKey = qp.get('agent');
+        const reviewRef = ref(db, `agents/${agentKey}/reviews`);
+
+
+        const reviewerName = `${profile.firstName} ${profile.lastName}`.trim();
 
         const newReview = {
-            name: "Anonymous",
+            name: reviewerName || 'Anonymous',
             stars: newRating,
-            time: "Just now",
+            time: new Date().toLocaleString(),
             text: newComment.trim()
         };
 
         push(reviewRef, newReview);
         setNewComment('');
         setNewRating(5);
-
     };
 
     if (!agentData) return <p>Loading agent profile...</p>;
 
-    const reviewsArray = agentData.reviews ? Object.values(agentData.reviews) : [];
-
+    const reviewsArray = agentData.reviews
+        ? Object.values(agentData.reviews)
+        : [];
     return (
         <>
             {/* HERO SECTION */}
-            {/* HERO SECTION (New Layout) */}
             <section className="hero-layout">
                 <div className="hero-info">
                     <h1 className="hero-heading">Discover {agentData.name}’s Real Estate Expertise</h1>
@@ -67,7 +97,13 @@ export default function AgentProfile() {
                     <p>{agentData.location}</p>
                     <p>{agentData.experience}</p>
                     <p>⭐ {agentData.rating}/5 ({reviewsArray.length} Reviews)</p>
-                    <button className="message-btn">Message Me</button>
+                    <button
+                        className="message-btn"
+                        onClick={() => window.location.href = `https://www.instagram.com/direct/t/17845410570450972`}
+                    >
+                        Message Me
+                    </button>
+
                 </div>
                 <div className="hero-photo">
                     <img src={agentData.image} alt={agentData.name} />
@@ -173,7 +209,6 @@ export default function AgentProfile() {
             {/* REVIEWS SECTION */}
             <section id="reviews-section" className="scroll-section section-alt review-section">
                 <h2>Client Reviews</h2>
-
                 <div className="reviews-summary">
                     <span className="reviews-stars">⭐ <strong>{agentData.rating}/5</strong></span>
                     <span className="review-count">({reviewsArray.length} Reviews)</span>
@@ -187,29 +222,28 @@ export default function AgentProfile() {
                         placeholder="Share your experience..."
                         rows="4"
                         value={newComment}
-                        onChange={(e) => setNewComment(e.target.value)}
+                        onChange={e => setNewComment(e.target.value)}
                     ></textarea>
 
                     <label htmlFor="rating">Rating:</label>
                     <div className="star-selector">
-                        {[1, 2, 3, 4, 5].map((num) => (
-                            <label key={num} style={{ marginRight: "10px", cursor: "pointer" }}>
+                        {[1, 2, 3, 4, 5].map(n => (
+                            <label key={n} style={{ marginRight: 10, cursor: 'pointer' }}>
                                 <input
                                     type="radio"
                                     name="rating"
-                                    value={num}
-                                    checked={newRating === num}
-                                    onChange={() => setNewRating(num)}
-                                    style={{ marginRight: "4px" }}
+                                    value={n}
+                                    checked={newRating === n}
+                                    onChange={() => setNewRating(n)}
+                                    style={{ marginRight: 4 }}
                                 />
-                                {'★'.repeat(num)}{'☆'.repeat(5 - num)}
+                                {'★'.repeat(n)}{'☆'.repeat(5 - n)}
                             </label>
                         ))}
                     </div>
 
                     <button type="submit">Submit</button>
                 </form>
-
 
                 {reviewsArray.map((review, idx) => (
                     <div className="review-card" key={idx}>
