@@ -25,7 +25,7 @@ html, body {
     flex-grow: 1;
   }
   
-  /* Chat Container - Remove artificial height, let page scroll */
+  /* Chat Container  */
   .chat-container {
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@ html, body {
     flex-grow: 1;
   }
   
-  /* Chat Input: keep aligned with wrapper width */
+  /* Chat Input */
   .chat-input-container {
     position: sticky;
     bottom: 0;
@@ -115,3 +115,26 @@ html, body {
     margin-left: 10px;
   }
   
+  @media (max-width: 480px) {
+    .chat-wrapper {
+      margin: 5px auto 60px;
+      padding: 5px;
+    }
+    .chat-input-container {
+      padding: 8px;
+    }
+   
+    .chat-input {
+      font-size: 16px;
+    }
+    .send-btn {
+      padding: 10px;
+    }
+
+    .bot-chat .message,
+    .user-chat .message {
+      max-width: 90%;
+      font-size: 16px;
+      line-height: 1.4;
+    }
+  }

@@ -169,13 +169,15 @@ body {
 }
 
 /* Agent Cards */
-.agent-list {
+.agent-list, .no-results {
     flex: 2;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 25px;
     align-items: start; 
+    min-height: 100%;
 }
+
 
 /* Agent Card */
 .agent-card {
@@ -252,20 +254,97 @@ body {
     background: #1237a0;
 }
 
-/* RESPONSIVE DESIGN */
+
 @media (max-width: 900px) {
-    .agent-list {
-        grid-template-columns: 1fr;
-        justify-content: center;
+
+
+    .main-container {
+      flex-direction: column;
+      padding: 10px;
     }
+  
+
+    .advanced-search {
+      width: 100%;
+      max-width: 880px;
+      margin-bottom: 20px;
+    }
+
+    .search-container {
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 10px;
+      margin-bottom: 20px;
+    }
+    .search-input,
+    .search-btn {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+
+    .page-title {
+      font-size: 22px;
+      margin: 20px 10px;
+    }
+  
+
+    .agent-list, .no-results {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 15px;
+      justify-items: center;
+    }
+  
+    .agent-card {
+        width: 520px;
+        height: 230px;
+        flex-direction: row;
+      }
+      .agent-card img {
+        width: 40%;
+        height: 100%;
+      }
+  
+    /* Tweak font sizes slightly */
+    .agent-info {
+      padding-left: 10px;
+    }
+    .agent-name {
+      font-size: 18px;
+    }
+    .agency-name,
+    .agent-location,
+    .rating,
+    .testimonial {
+      font-size: 12px;
+    }
+    .profile-btn {
+      font-size: 13px;
+      padding: 8px 12px;
+    }
+  }
+  
+
+  @media (max-width: 480px) {
+  
+
+    .advanced-search h2 {
+      font-size: 18px;
+    }
+  
 
     .agent-card {
-        width: 100%;
-        max-width: 500px; 
-        height: 220px;
+        width: 440px;
+        height: 230px;
+        flex-direction: row;
+      }
+      .agent-card img {
+        width: 40%;
+        height: 100%;
+      }
+    .agent-info {
+      padding-left: 0;
     }
-
-    .agent-card img {
-        width: 45%;
-    }
-}
+  }
+  

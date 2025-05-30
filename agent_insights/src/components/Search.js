@@ -19,12 +19,12 @@ export default function SearchPage() {
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
-    const specialty = queryParams.get('specialty');
+    const market = queryParams.get('market');
     const language = queryParams.get('language');
 
     setFilters((prev) => ({
       ...prev,
-      market: specialty || '',
+      market: market || '',
       language: language || ''
     }));
   }, [location.search]);
@@ -48,14 +48,36 @@ export default function SearchPage() {
   };
 
   const filteredAgents = agents.filter((agent) => {
-    const matchesCity = !filters.city || agent.location?.toLowerCase().includes(filters.city.toLowerCase());
-    const matchesSearch = !filters.searchTerm || agent.name?.toLowerCase().includes(filters.searchTerm.toLowerCase());
-    const matchesExperience = !filters.experience || agent.experience === filters.experience;
-    const matchesMarket = !filters.market || agent.market === filters.market;
-    const matchesReview = !filters.review || agent.rating >= parseFloat(filters.review);
-    const matchesLanguage = !filters.language || agent.languages?.toLowerCase().includes(filters.language.toLowerCase());
-    const matchesCommunication = !filters.communication || agent.communicationStyle?.toLowerCase() === filters.communication.toLowerCase();
-
+    const matchesCity =
+      !filters.city ||
+      agent.location?.toLowerCase().includes(filters.city.toLowerCase());
+  
+    const matchesSearch =
+      !filters.searchTerm ||
+      agent.name?.toLowerCase().includes(filters.searchTerm.toLowerCase());
+  
+    const matchesExperience =
+      !filters.experience || agent.experience === filters.experience;
+  
+    const matchesMarket =
+      !filters.market || agent.market === filters.market;
+  
+    const matchesReview =
+      !filters.review || agent.rating >= parseFloat(filters.review);
+  
+    const matchesLanguage =
+      !filters.language ||
+      (Array.isArray(agent.languages) &&
+        agent.languages
+          .map((l) => l.toLowerCase())
+          .includes(filters.language.toLowerCase()));
+  
+    const matchesCommunication =
+      !filters.communication ||
+      agent.communicationStyle
+        ?.toLowerCase()
+        .includes(filters.communication.toLowerCase());
+  
     return (
       matchesCity &&
       matchesSearch &&
@@ -66,6 +88,7 @@ export default function SearchPage() {
       matchesCommunication
     );
   });
+
 
   return (
     <>
@@ -122,29 +145,30 @@ export default function SearchPage() {
         </section>
 
         <section className="agent-list">
-          {filteredAgents.length > 0 ? (
-            filteredAgents.map((agent, index) => (
-              <div className="agent-card" key={index}>
-                <img src={agent.image} alt={agent.name} />
-                <div className="agent-info">
-                  <h4 className="agency-name">{agent.agency}</h4>
-                  <h2 className="agent-name">{agent.name}</h2>
-                  <p className="agent-location">{agent.location}</p>
-                  <p className="rating">
-                    ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
-                    {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
-                  </p>
-                  <p className="testimonial">"{agent.testimonial}"</p>
-                  <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
-                    Check Profile
-                  </Link>
-                </div>
-              </div>
-            ))
-          ) : (
-            <p>No matching agents found.</p>
-          )}
-        </section>
+  {filteredAgents.length > 0 ? (
+    filteredAgents.map((agent, index) => (
+      <div className="agent-card" key={index}>
+        <img src={agent.image} alt={agent.name} />
+        <div className="agent-info">
+          <h4 className="agency-name">{agent.agency}</h4>
+          <h2 className="agent-name">{agent.name}</h2>
+          <p className="agent-location">{agent.location}</p>
+          <p className="rating">
+            ⭐ <strong>{agent.rating?.toFixed(1)}/5</strong> (
+            {agent.reviews ? Object.values(agent.reviews).length : 0} Reviews)
+          </p>
+          <p className="testimonial">"{agent.testimonial}"</p>
+          <Link to={`/AgentProfile?agent=${agent.name.toLowerCase().replace(/\s+/g, '_')}`} className="profile-btn">
+            Check Profile
+          </Link>
+        </div>
+      </div>
+    ))
+  ) : (
+    <div className="no-results">😕 No matching agents found. Try adjusting your filters.</div>
+  )}
+</section>
+
       </div>
     </>
   );

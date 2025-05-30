@@ -5,11 +5,11 @@ function Chatbot() {
   const initialMessages = [
     {
       sender: 'bot',
-      text: '👋 Hi there! Welcome to InsightBot.',
+      text: '👋 Hi there! Welcome to InsightBot. The first reply may take 1-2 mins. Thanks for waiting!',
     },
     {
       sender: 'bot',
-      text: "Not sure where to start? Try asking:\n• Can you match me with an agent near Bellevue?\n• I want someone who’s patient and responsive.\n• I’m looking for a family-friendly home — who can help?\n• Can you suggest someone with 5+ years of experience?",
+      text: "Not sure where to start? Try asking:\n• Can you match me with an agent near Bellevue?\n• I want someone who's patient and responsive.\n• I'm looking for a family-friendly home — who can help?",
     },
   ];
 

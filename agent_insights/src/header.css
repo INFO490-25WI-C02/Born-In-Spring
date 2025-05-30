@@ -91,3 +91,10 @@ main {
     background: none;
   }
 }
+/* 
+.user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: -30px; 
+} */

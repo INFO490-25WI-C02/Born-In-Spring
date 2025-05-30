@@ -59,20 +59,20 @@ export default function AgentProfile() {
     return (
         <>
             {/* HERO SECTION */}
-{/* HERO SECTION (New Layout) */}
-<section className="hero-layout">
-        <div className="hero-info">
-          <h1 className="hero-heading">Discover {agentData.name}’s Real Estate Expertise</h1>
-          <p className="agency">{agentData.agency}</p>
-          <p>{agentData.location}</p>
-          <p>{agentData.experience}</p>
-          <p>⭐ {agentData.rating}/5 ({reviewsArray.length} Reviews)</p>
-          <button className="message-btn">Message Me</button>
-        </div>
-        <div className="hero-photo">
-          <img src={agentData.image} alt={agentData.name} />
-        </div>
-      </section>
+            {/* HERO SECTION (New Layout) */}
+            <section className="hero-layout">
+                <div className="hero-info">
+                    <h1 className="hero-heading">Discover {agentData.name}’s Real Estate Expertise</h1>
+                    <p className="agency">{agentData.agency}</p>
+                    <p>{agentData.location}</p>
+                    <p>{agentData.experience}</p>
+                    <p>⭐ {agentData.rating}/5 ({reviewsArray.length} Reviews)</p>
+                    <button className="message-btn">Message Me</button>
+                </div>
+                <div className="hero-photo">
+                    <img src={agentData.image} alt={agentData.name} />
+                </div>
+            </section>
 
             {/* EXPERIENCE SECTION */}
             <section className="section-alt blue-bg">
@@ -81,26 +81,32 @@ export default function AgentProfile() {
                         <h2 className="section-title light">Expertise & Specialties</h2>
                         <p className="sub-label">Select the key trait you value</p>
 
-                        <h4>Specialties</h4>
+                        <h4>Specialized Market</h4>
                         <div className="tag-group">
-                            {(Array.isArray(agentData.specialties)
-                                ? agentData.specialties
-                                : agentData.specialties?.split(',')
-                            )?.map((tag, idx) => (
-                                <Link to={`/search?specialty=${encodeURIComponent(tag.trim())}`} className="tag-btn" key={idx}>
-                                    {tag.trim()}
+                            {agentData.market && (
+                                <Link
+                                    to={`/search?market=${encodeURIComponent(agentData.market)}`}
+                                    className="tag-btn"
+                                >
+                                    {agentData.market}
                                 </Link>
-                            ))}
+                            )}
                         </div>
+
 
 
                         <h4>Languages Spoken</h4>
                         <div className="tag-group">
-                            {agentData.languages?.split(',').map((lang, idx) => (
-                                <Link to={`/search?language=${encodeURIComponent(lang.trim())}`} className="tag-btn" key={idx}>
-                                    {lang.trim()}
-                                </Link>
-                            ))}
+                            {Array.isArray(agentData.languages) &&
+                                agentData.languages.map((lang, idx) => (
+                                    <Link
+                                        to={`/search?language=${encodeURIComponent(lang.trim())}`}
+                                        className="tag-btn"
+                                        key={idx}
+                                    >
+                                        {lang.trim()}
+                                    </Link>
+                                ))}
                         </div>
 
 
