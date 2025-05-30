@@ -16,16 +16,18 @@ If homebuyers and sellers don’t have a trusted advisor, they might feel overwh
 
 ## Feature
 ### P0: 
-- Search functionality for finding agents
+- Smart Search & Filter
 - Transparent agent profiles
 - User ratings and reviews of advisors
 - AI chatbot connect user with agents that match their goals
+
 ### P1:
+- User Login & Authentication
+- Educational resource hub
 - Share the agent profile
 - Favorite certain agent
 - Agent comparison
-- Interactive quiz that matches up the user with a random advisor
-- Educational resource hub
+
 ### P2:
 - Fraud Detection & Risk Scoring for Agents
 - Service Completion Rate Analytics
@@ -92,3 +94,5 @@ Real estate in a Digital age. National Association of REALTORS®. (2021, Septemb
 Brobeck, S. (2024, January 26). Nearly half of real estate agents sold no or one house this past year · Consumer Federation of America. Consumer Federation of America. https://consumerfed.org/press_release/nearly-half-of-real-estate-agents-sold-no-or-one-house-this-past-year
 
 Quick real estate statistics. (2024, July 8). https://www.nar.realtor/research-and-statistics/quick-real-estate-statistics
+
+Part of the code in this repo is generate by ChatGPT, we also use Chatgpt for debug.
