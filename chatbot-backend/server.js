@@ -25,55 +25,41 @@ app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
 
   try {
-
     const snapshot = await db.ref('agents').once('value');
     const agents = snapshot.val();
+
     if (!agents) {
       return res.json({ reply: "No agents found in the database." });
     }
 
+    const context = Object.values(agents).map(agent =>
+      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, specialties: ${agent.specialties.join(", ")}, commission: ${agent.commission}`
+    ).join('\n');
 
-    const context = Object.values(agents)
-      .map(agent =>
-        `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, specialties: ${agent.specialties.join(", ")}, commission: ${agent.commission}`
-      )
-      .join('\n');
+    const prompt = `
+You are a helpful real estate assistant.  
+1) If the user is asking for **general market info** (prices, process, tips, etc.), you should answer the question directly using your real-estate knowledge, **without** recommending an agent.  
+2) Only recommend **one** specific agent if the user explicitly asks to be matched with or recommended an agent (words like "recommend", "agent", "match"). If so, mention the agent’s name, rating, and how they meet the request.  
 
-
-
-    const wantsAgent = /\b(?:recommend(?: an)? agent|match(?: me)? with an agent|agent near)\b/i
-      .test(userMessage);
-
-
-
-    const systemPrompt = wantsAgent
-      ? `
-You are a helpful real-estate assistant.  
-When the user explicitly asks you to recommend or match them with an agent, choose ONE agent from the list below and mention their name, rating, and why they fit the user’s request:
+Here is the list of available agents you **may** recommend (only when asked):
 
 ${context}
-`
-      : `
-You are a helpful real-estate assistant.  
-Answer general questions about prices, market trends, processes, financing, and tips.  
-Do NOT recommend any agent unless the user explicitly asks for one.
-`;
 
+Now, respond to the user's last message.
+`;
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-3.5-turbo',
       messages: [
-        { role: 'system', content: systemPrompt.trim() },
+        { role: 'system', content: prompt },
         { role: 'user', content: userMessage }
       ]
     });
 
-
     const reply = completion.choices[0].message.content;
     res.json({ reply });
-
   } catch (err) {
-    console.error('Error in /chat:', err);
+    console.error('Error:', err);
     res.status(500).json({ reply: 'Something went wrong. Please try again later.' });
   }
 });
