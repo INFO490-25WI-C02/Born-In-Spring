@@ -40,13 +40,14 @@ function Chatbot() {
   };
 
   const extractAgentSlug = (text) => {
-    const match = text.match(/recommend\s+([A-Z][a-z]+\s[A-Z][a-z]+)/i);
+    const match = text.match(/RECOMMENDED_AGENT:\s+([A-Z][a-z]+\s[A-Z][a-z]+)/);
     if (match) {
-      const name = match[1].toLowerCase().replace(/\s+/g, '_');
-      return name;
+      return match[1].toLowerCase().replace(/\s+/g, '_');
     }
     return null;
   };
+  
+  
 
   const handleSend = async () => {
     if (!input.trim()) return;
