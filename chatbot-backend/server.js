@@ -33,9 +33,8 @@ app.post('/chat', async (req, res) => {
     }
 
     const context = Object.values(agents).map(agent =>
-      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, market: ${agent.market}, specialties: ${agent.specialties.join(", ")}`
+      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, market: ${agent.market || "N/A"}, specialties: ${(agent.specialties || []).join(", ")}`
     ).join('\n');
-    
 
     const prompt = `
 You are a helpful real estate assistant. Here is a list of available agents:
