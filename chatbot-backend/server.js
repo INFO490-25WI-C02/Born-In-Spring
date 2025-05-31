@@ -33,15 +33,16 @@ app.post('/chat', async (req, res) => {
     }
 
     const context = Object.values(agents).map(agent =>
-      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, specialties: ${agent.specialties.join(", ")}, commission: ${agent.commission}`
+      `${agent.name}, located in ${agent.location}, rating: ${agent.rating}, market: ${agent.market}, specialties: ${agent.specialties.join(", ")}`
     ).join('\n');
+    
 
     const prompt = `
 You are a helpful real estate assistant. Here is a list of available agents:
 
 ${context}
 
-Based on the user's request, recommend ONE specific agent. Mention the agent's name, their rating, and one matching specialty. Be concise.
+Based on the user's request, recommend ONE specific agent. Mention the agent's name, their rating, and the most relevant market they serve. Be concise.
 `;
 
     const completion = await openai.chat.completions.create({
