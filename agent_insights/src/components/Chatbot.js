@@ -13,6 +13,7 @@ function Chatbot() {
     },
   ];
 
+  
   const [messages, setMessages] = useState(initialMessages);
   const [input, setInput] = useState('');
   const containerRef = useRef(null);
@@ -40,14 +41,13 @@ function Chatbot() {
   };
 
   const extractAgentSlug = (text) => {
-    const match = text.match(/RECOMMENDED_AGENT:\s+([A-Z][a-z]+\s[A-Z][a-z]+)/);
+    const match = text.match(/recommend\s+([A-Z][a-z]+\s[A-Z][a-z]+)/i);
     if (match) {
-      return match[1].toLowerCase().replace(/\s+/g, '_');
+      const name = match[1].toLowerCase().replace(/\s+/g, '_');
+      return name;
     }
     return null;
   };
-  
-  
 
   const handleSend = async () => {
     if (!input.trim()) return;

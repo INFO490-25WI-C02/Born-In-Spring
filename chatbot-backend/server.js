@@ -37,15 +37,11 @@ app.post('/chat', async (req, res) => {
     ).join('\n');
 
     const prompt = `
-You are a helpful real estate assistant.  
-1) If the user is asking for **general market info** (prices, process, tips, etc.), you should answer the question directly using your real-estate knowledge, **without** recommending an agent.  
-2) Only recommend **one** specific agent if the user explicitly asks to be matched with or recommended an agent (words like "recommend", "agent", "match"). If so, mention the agent’s name, rating, and how they meet the request and their profile link.  
-
-Here is the list of available agents you **may** recommend (only when asked):
+You are a helpful real estate assistant. Here is a list of available agents:
 
 ${context}
 
-Now, respond to the user's last message.
+Based on the user's request, recommend ONE specific agent. Mention the agent's name, their rating, and one matching specialty. Be concise.
 `;
 
     const completion = await openai.chat.completions.create({
